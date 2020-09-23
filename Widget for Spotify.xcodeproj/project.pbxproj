@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,7 +14,40 @@
 		1E8D2000251BDB2D00343593 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8D1FFF251BDB2D00343593 /* Preview Assets.xcassets */; };
 		1E8D2003251BDB2D00343593 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8D2001251BDB2D00343593 /* LaunchScreen.storyboard */; };
 		1E8D200B251BDCDC00343593 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D200A251BDCDC00343593 /* Track.swift */; };
+		F4B3B5D9251BF5E300570A97 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B3B5D8251BF5E300570A97 /* WidgetKit.framework */; };
+		F4B3B5DB251BF5E300570A97 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B3B5DA251BF5E300570A97 /* SwiftUI.framework */; };
+		F4B3B5DE251BF5E300570A97 /* Widget_for_Spotify_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B3B5DD251BF5E300570A97 /* Widget_for_Spotify_Widget.swift */; };
+		F4B3B5E1251BF5E500570A97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4B3B5E0251BF5E500570A97 /* Assets.xcassets */; };
+		F4B3B5E3251BF5E500570A97 /* Widget_for_Spotify_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F4B3B5DF251BF5E300570A97 /* Widget_for_Spotify_Widget.intentdefinition */; };
+		F4B3B5E4251BF5E500570A97 /* Widget_for_Spotify_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F4B3B5DF251BF5E300570A97 /* Widget_for_Spotify_Widget.intentdefinition */; };
+		F4B3B5E7251BF5E500570A97 /* Widget for Spotify WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F4B3B5D6251BF5E300570A97 /* Widget for Spotify WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F4B3B5F0251BF6E600570A97 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F4B3B5EF251BF6E600570A97 /* AppAuth */; };
+		F4B3B5F2251BF6E600570A97 /* AppAuthCore in Frameworks */ = {isa = PBXBuildFile; productRef = F4B3B5F1251BF6E600570A97 /* AppAuthCore */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F4B3B5E5251BF5E500570A97 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E8D1FEB251BDB2B00343593 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4B3B5D5251BF5E300570A97;
+			remoteInfo = "Widget for Spotify WidgetExtension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F4B3B5E8251BF5E500570A97 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F4B3B5E7251BF5E500570A97 /* Widget for Spotify WidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1E8D1FF3251BDB2B00343593 /* Widget for Spotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Widget for Spotify.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,6 +59,13 @@
 		1E8D2002251BDB2D00343593 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E8D2004251BDB2D00343593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E8D200A251BDCDC00343593 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		F4B3B5D6251BF5E300570A97 /* Widget for Spotify WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Widget for Spotify WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4B3B5D8251BF5E300570A97 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		F4B3B5DA251BF5E300570A97 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		F4B3B5DD251BF5E300570A97 /* Widget_for_Spotify_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget_for_Spotify_Widget.swift; sourceTree = "<group>"; };
+		F4B3B5DF251BF5E300570A97 /* Widget_for_Spotify_Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Widget_for_Spotify_Widget.intentdefinition; sourceTree = "<group>"; };
+		F4B3B5E0251BF5E500570A97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F4B3B5E2251BF5E500570A97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +73,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B3B5F0251BF6E600570A97 /* AppAuth in Frameworks */,
+				F4B3B5F2251BF6E600570A97 /* AppAuthCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4B3B5D3251BF5E300570A97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4B3B5DB251BF5E300570A97 /* SwiftUI.framework in Frameworks */,
+				F4B3B5D9251BF5E300570A97 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				1E8D1FF5251BDB2B00343593 /* Widget for Spotify */,
+				F4B3B5DC251BF5E300570A97 /* Widget for Spotify Widget */,
+				F4B3B5D7251BF5E300570A97 /* Frameworks */,
 				1E8D1FF4251BDB2B00343593 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				1E8D1FF3251BDB2B00343593 /* Widget for Spotify.app */,
+				F4B3B5D6251BF5E300570A97 /* Widget for Spotify WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,6 +132,26 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		F4B3B5D7251BF5E300570A97 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4B3B5D8251BF5E300570A97 /* WidgetKit.framework */,
+				F4B3B5DA251BF5E300570A97 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4B3B5DC251BF5E300570A97 /* Widget for Spotify Widget */ = {
+			isa = PBXGroup;
+			children = (
+				F4B3B5DD251BF5E300570A97 /* Widget_for_Spotify_Widget.swift */,
+				F4B3B5DF251BF5E300570A97 /* Widget_for_Spotify_Widget.intentdefinition */,
+				F4B3B5E0251BF5E500570A97 /* Assets.xcassets */,
+				F4B3B5E2251BF5E500570A97 /* Info.plist */,
+			);
+			path = "Widget for Spotify Widget";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -88,15 +162,38 @@
 				1E8D1FEF251BDB2B00343593 /* Sources */,
 				1E8D1FF0251BDB2B00343593 /* Frameworks */,
 				1E8D1FF1251BDB2B00343593 /* Resources */,
+				F4B3B5E8251BF5E500570A97 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4B3B5E6251BF5E500570A97 /* PBXTargetDependency */,
+			);
+			name = "Widget for Spotify";
+			packageProductDependencies = (
+				F4B3B5EF251BF6E600570A97 /* AppAuth */,
+				F4B3B5F1251BF6E600570A97 /* AppAuthCore */,
+			);
+			productName = "Widget for Spotify";
+			productReference = 1E8D1FF3251BDB2B00343593 /* Widget for Spotify.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F4B3B5D5251BF5E300570A97 /* Widget for Spotify WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4B3B5EB251BF5E500570A97 /* Build configuration list for PBXNativeTarget "Widget for Spotify WidgetExtension" */;
+			buildPhases = (
+				F4B3B5D2251BF5E300570A97 /* Sources */,
+				F4B3B5D3251BF5E300570A97 /* Frameworks */,
+				F4B3B5D4251BF5E300570A97 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Widget for Spotify";
-			productName = "Widget for Spotify";
-			productReference = 1E8D1FF3251BDB2B00343593 /* Widget for Spotify.app */;
-			productType = "com.apple.product-type.application";
+			name = "Widget for Spotify WidgetExtension";
+			productName = "Widget for Spotify WidgetExtension";
+			productReference = F4B3B5D6251BF5E300570A97 /* Widget for Spotify WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -104,12 +201,15 @@
 		1E8D1FEB251BDB2B00343593 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1170;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1170;
 				ORGANIZATIONNAME = "Sjoerd Bolten";
 				TargetAttributes = {
 					1E8D1FF2251BDB2B00343593 = {
 						CreatedOnToolsVersion = 11.7;
+					};
+					F4B3B5D5251BF5E300570A97 = {
+						CreatedOnToolsVersion = 12.0;
 					};
 				};
 			};
@@ -122,11 +222,15 @@
 				Base,
 			);
 			mainGroup = 1E8D1FEA251BDB2B00343593;
+			packageReferences = (
+				F4B3B5EE251BF6E600570A97 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
+			);
 			productRefGroup = 1E8D1FF4251BDB2B00343593 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				1E8D1FF2251BDB2B00343593 /* Widget for Spotify */,
+				F4B3B5D5251BF5E300570A97 /* Widget for Spotify WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -142,6 +246,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F4B3B5D4251BF5E300570A97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4B3B5E1251BF5E500570A97 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -149,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B3B5E4251BF5E500570A97 /* Widget_for_Spotify_Widget.intentdefinition in Sources */,
 				1E8D1FF7251BDB2B00343593 /* AppDelegate.swift in Sources */,
 				1E8D1FF9251BDB2B00343593 /* SceneDelegate.swift in Sources */,
 				1E8D1FFB251BDB2B00343593 /* ContentView.swift in Sources */,
@@ -156,7 +269,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F4B3B5D2251BF5E300570A97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4B3B5DE251BF5E300570A97 /* Widget_for_Spotify_Widget.swift in Sources */,
+				F4B3B5E3251BF5E500570A97 /* Widget_for_Spotify_Widget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F4B3B5E6251BF5E500570A97 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4B3B5D5251BF5E300570A97 /* Widget for Spotify WidgetExtension */;
+			targetProxy = F4B3B5E5251BF5E500570A97 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1E8D2001251BDB2D00343593 /* LaunchScreen.storyboard */ = {
@@ -287,10 +417,11 @@
 		1E8D2008251BDB2D00343593 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Widget for Spotify/Preview Content\"";
-				DEVELOPMENT_TEAM = X6CCR6B4PZ;
+				DEVELOPMENT_TEAM = 2993LH87F6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Widget for Spotify/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -307,6 +438,7 @@
 		1E8D2009251BDB2D00343593 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Widget for Spotify/Preview Content\"";
@@ -319,6 +451,52 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.netlob.widget-for-spotify.Widget-for-Spotify";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F4B3B5E9251BF5E500570A97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X6CCR6B4PZ;
+				INFOPLIST_FILE = "Widget for Spotify Widget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.netlob.widget-for-spotify.Widget-for-Spotify.Widget-for-Spotify-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F4B3B5EA251BF5E500570A97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X6CCR6B4PZ;
+				INFOPLIST_FILE = "Widget for Spotify Widget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.netlob.widget-for-spotify.Widget-for-Spotify.Widget-for-Spotify-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -345,7 +523,40 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		F4B3B5EB251BF5E500570A97 /* Build configuration list for PBXNativeTarget "Widget for Spotify WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4B3B5E9251BF5E500570A97 /* Debug */,
+				F4B3B5EA251BF5E500570A97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F4B3B5EE251BF6E600570A97 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/openid/AppAuth-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F4B3B5EF251BF6E600570A97 /* AppAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4B3B5EE251BF6E600570A97 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuth;
+		};
+		F4B3B5F1251BF6E600570A97 /* AppAuthCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4B3B5EE251BF6E600570A97 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuthCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1E8D1FEB251BDB2B00343593 /* Project object */;
 }

@@ -45,8 +45,30 @@ struct Widget_for_Spotify_WidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        HStack {
+            VStack(alignment: .leading, spacing: 3.0) {
+                Image("PreviewArtAsset")
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(10)
+                    .shadow(color: .black, radius: 2, x: 2, y: 2)
+                Text("Nummer Titel")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.leading)
+                    .padding(.top, 3.0)
+                Text("Spotify")
+                    .font(.subheadline)
+            }
+            .padding(.vertical, 12.0)
+            .padding(.horizontal, 15.0)
+//            .padding(.bottom, 10.0)
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+            Spacer()
+        }
+        .background(Color("BackgroundColor"))
     }
+    
 }
 
 @main

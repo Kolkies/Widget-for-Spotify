@@ -7,8 +7,12 @@
 //
 
 import SwiftUI
+import AppAuth
 
 struct ContentView: View {
+    // property of the containing class
+    private var authState: OIDAuthState?
+    
     var body: some View {
         Text("Hello World")
     }

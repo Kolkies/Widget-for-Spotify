@@ -21,6 +21,9 @@
 		F472C1B9251C6A48000E7318 /* SpotifyiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F472C1B3251C695E000E7318 /* SpotifyiOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F472C1BC251C6A50000E7318 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F472C1B3251C695E000E7318 /* SpotifyiOS.framework */; };
 		F472C1BD251C6A50000E7318 /* SpotifyiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F472C1B3251C695E000E7318 /* SpotifyiOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F472C1C9251D4F6B000E7318 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472C1C8251D4F6B000E7318 /* Secret.swift */; };
+		F472C1CA251D4F6B000E7318 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472C1C8251D4F6B000E7318 /* Secret.swift */; };
+		F472C1CC251D50AD000E7318 /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F472C1CB251D50AD000E7318 /* AppAuth */; };
 		F4B3B5D9251BF5E300570A97 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B3B5D8251BF5E300570A97 /* WidgetKit.framework */; };
 		F4B3B5DB251BF5E300570A97 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B3B5DA251BF5E300570A97 /* SwiftUI.framework */; };
 		F4B3B5DE251BF5E300570A97 /* Widget_for_Spotify_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B3B5DD251BF5E300570A97 /* Widget_for_Spotify_Widget.swift */; };
@@ -45,25 +48,25 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		F472C1BA251C6A48000E7318 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
 				F472C1B9251C6A48000E7318 /* SpotifyiOS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 		F472C1BE251C6A51000E7318 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
 				F472C1BD251C6A50000E7318 /* SpotifyiOS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 		F4B3B5E8251BF5E500570A97 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -91,6 +94,9 @@
 		F4652355251C01BF00817613 /* AuthHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHandler.swift; sourceTree = "<group>"; };
 		F472C1AD251C66A9000E7318 /* Widget-For-Spotify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Widget-For-Spotify-Bridging-Header.h"; sourceTree = "<group>"; };
 		F472C1B3251C695E000E7318 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
+		F472C1BF251C8DA1000E7318 /* Widget for Spotify.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Widget for Spotify.entitlements"; sourceTree = "<group>"; };
+		F472C1C0251C8DEE000E7318 /* Widget for Spotify WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Widget for Spotify WidgetExtension.entitlements"; sourceTree = "<group>"; };
+		F472C1C8251D4F6B000E7318 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		F4B3B5D6251BF5E300570A97 /* Widget for Spotify WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Widget for Spotify WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4B3B5D8251BF5E300570A97 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F4B3B5DA251BF5E300570A97 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -117,6 +123,7 @@
 			files = (
 				F4B3B5DB251BF5E300570A97 /* SwiftUI.framework in Frameworks */,
 				F472C1B8251C6A48000E7318 /* SpotifyiOS.framework in Frameworks */,
+				F472C1CC251D50AD000E7318 /* AppAuth in Frameworks */,
 				F4B3B5D9251BF5E300570A97 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +134,7 @@
 		1E8D1FEA251BDB2B00343593 = {
 			isa = PBXGroup;
 			children = (
+				F472C1C0251C8DEE000E7318 /* Widget for Spotify WidgetExtension.entitlements */,
 				F472C1AD251C66A9000E7318 /* Widget-For-Spotify-Bridging-Header.h */,
 				1E8D1FF5251BDB2B00343593 /* Widget for Spotify */,
 				F4B3B5DC251BF5E300570A97 /* Widget for Spotify Widget */,
@@ -147,6 +155,7 @@
 		1E8D1FF5251BDB2B00343593 /* Widget for Spotify */ = {
 			isa = PBXGroup;
 			children = (
+				F472C1BF251C8DA1000E7318 /* Widget for Spotify.entitlements */,
 				1E8D1FF6251BDB2B00343593 /* AppDelegate.swift */,
 				1E8D1FF8251BDB2B00343593 /* SceneDelegate.swift */,
 				1E8D1FFA251BDB2B00343593 /* ContentView.swift */,
@@ -156,6 +165,7 @@
 				1E8D1FFE251BDB2D00343593 /* Preview Content */,
 				1E8D200A251BDCDC00343593 /* Track.swift */,
 				F4652355251C01BF00817613 /* AuthHandler.swift */,
+				F472C1C8251D4F6B000E7318 /* Secret.swift */,
 			);
 			path = "Widget for Spotify";
 			sourceTree = "<group>";
@@ -230,6 +240,9 @@
 			dependencies = (
 			);
 			name = "Widget for Spotify WidgetExtension";
+			packageProductDependencies = (
+				F472C1CB251D50AD000E7318 /* AppAuth */,
+			);
 			productName = "Widget for Spotify WidgetExtension";
 			productReference = F4B3B5D6251BF5E300570A97 /* Widget for Spotify WidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -302,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4B3B5E4251BF5E500570A97 /* Widget_for_Spotify_Widget.intentdefinition in Sources */,
+				F472C1C9251D4F6B000E7318 /* Secret.swift in Sources */,
 				1E8D1FF7251BDB2B00343593 /* AppDelegate.swift in Sources */,
 				F4652356251C01BF00817613 /* AuthHandler.swift in Sources */,
 				1E8D1FF9251BDB2B00343593 /* SceneDelegate.swift in Sources */,
@@ -315,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4B3B5DE251BF5E300570A97 /* Widget_for_Spotify_Widget.swift in Sources */,
+				F472C1CA251D4F6B000E7318 /* Secret.swift in Sources */,
 				F4B3B5E3251BF5E500570A97 /* Widget_for_Spotify_Widget.intentdefinition in Sources */,
 				F4652357251C01BF00817613 /* AuthHandler.swift in Sources */,
 			);
@@ -465,6 +480,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Widget for Spotify/Widget for Spotify.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Widget for Spotify/Preview Content\"";
 				DEVELOPMENT_TEAM = FCB4S3W235;
@@ -479,7 +495,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.netlob.widget-for-spotify.Widget-for-Spotify";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.netlob.widget-for-spotify";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Widget-For-Spotify-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -492,6 +508,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Widget for Spotify/Widget for Spotify.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Widget for Spotify/Preview Content\"";
 				DEVELOPMENT_TEAM = FCB4S3W235;
@@ -506,7 +523,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.netlob.widget-for-spotify.Widget-for-Spotify";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.netlob.widget-for-spotify";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Widget-For-Spotify-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -520,8 +537,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "Widget for Spotify WidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X6CCR6B4PZ;
+				DEVELOPMENT_TEAM = FCB4S3W235;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -533,7 +551,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.netlob.widget-for-spotify.Widget-for-Spotify.Widget-for-Spotify-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.netlob.widget-for-spotify.Widget-for-Spotify-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -547,8 +565,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "Widget for Spotify WidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X6CCR6B4PZ;
+				DEVELOPMENT_TEAM = FCB4S3W235;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -560,7 +579,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.netlob.widget-for-spotify.Widget-for-Spotify.Widget-for-Spotify-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.netlob.widget-for-spotify.Widget-for-Spotify-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -612,6 +631,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F472C1CB251D50AD000E7318 /* AppAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4B3B5EE251BF6E600570A97 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuth;
+		};
 		F4B3B5EF251BF6E600570A97 /* AppAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F4B3B5EE251BF6E600570A97 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;

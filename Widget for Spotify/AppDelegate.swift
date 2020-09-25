@@ -10,9 +10,14 @@ import UIKit
 import AppAuth
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, SPTSessionManagerDelegate, ObservableObject {
+    
     // property of the app's AppDelegate
     var currentAuthorizationFlow: OIDExternalUserAgentSession?
+    
+    @Published var spotifySession: SPTSession? = nil
+    
+    @Published var currentPlayingSong: SPTAppRemoteTrack? = nil
 
     let SpotifyClientID = "280335d60c1a4ae8a4d3f5ff344e8e16"
     let SpotifyRedirectURL = URL(string: "widget-for-spotify://spotify-login-callback")!
@@ -25,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate, SPT
     
     lazy var appRemote: SPTAppRemote = {
       let appRemote = SPTAppRemote(configuration: self.configuration, logLevel: .debug)
-      appRemote.connectionParameters.accessToken = self.accessToken
+       appRemote.connectionParameters.accessToken = self.sessionManager.session?.accessToken
       appRemote.delegate = self
       return appRemote
     }()
@@ -52,17 +57,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate, SPT
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-      // Sends the URL to the current authorization flow (if any) which will
-      // process it if it relates to an authorization response.
-      if let authorizationFlow = self.currentAuthorizationFlow,
-                                 authorizationFlow.resumeExternalUserAgentFlow(with: url) {
-        self.currentAuthorizationFlow = nil
+        print(url.absoluteString)
+        self.sessionManager.application(app, open: url, options: options)
+        
         return true
-      }
-
-      // Your additional URL handling (if any)
-
-      return false
     }
     
     func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
@@ -75,32 +73,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate, SPT
     
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
       // Connection was successful, you can begin issuing commands
+        print("AppRemote succesfully connected")
       self.appRemote.playerAPI?.delegate = self
       self.appRemote.playerAPI?.subscribe(toPlayerState: { (result, error) in
+        if let result = result {
+            print(result)
+        }
         if let error = error {
           debugPrint(error.localizedDescription)
         }
       })
-        
-    let sharedObject = spotifyData(name: "My Name")
-                       
-     do {
-         let data = try JSONEncoder().encode(sharedObject)
-
-          /// Make sure to use your "App Group" container suite name when saving and retrieving the object from UserDefaults
-          let container = UserDefaults(suiteName:"group.dev.netlob.widget-for-spotify")
-              container?.setValue(data, forKey: "spotifyData")
-                            
-          /// Used to let the widget extension to reload the timeline
-//          WidgetCenter.shared.reloadAllTimelines()
-
-          } catch {
-            print("Unable to encode WidgetDay: \(error.localizedDescription)")
-       }
     }
     
     func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
-      debugPrint("Track name: %@", playerState.track.name)
+        print("Track name: %@", playerState.track.name)
+        self.currentPlayingSong = playerState.track
+    }
+    
+    func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
+        print("Succesfully logged in")
+        spotifySession = session
+        SpotifyHandler.storeTokens(accessToken: session.accessToken, refreshToken: session.refreshToken)
+    }
+    
+    func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
+        print("session manager error" + error.localizedDescription)
+    }
+    
+    lazy var sessionManager: SPTSessionManager = {
+        if let tokenSwapURL = URL(string: "https://spotifywidgettokenservice.herokuapp.com/api/token"),
+           let tokenRefreshURL = URL(string: "https://spotifywidgettokenservice.herokuapp.com/api/refresh_token") {
+            self.configuration.tokenSwapURL = tokenSwapURL
+            self.configuration.tokenRefreshURL = tokenRefreshURL
+            self.configuration.playURI = nil
+        }
+        let manager = SPTSessionManager(configuration: self.configuration, delegate: self)
+       return manager
+    }()
+    
+    let requestedScopes: SPTScope = [.appRemoteControl, .userReadCurrentlyPlaying]
+    
+    func signin(){
+        self.sessionManager.alwaysShowAuthorizationDialog = true
+        self.sessionManager.initiateSession(with: requestedScopes, options: .default)
+    }
+    
+    func connect() {
+        if(spotifySession != nil){
+            self.appRemote.authorizeAndPlayURI("")
+            self.appRemote.connect()
+        }else{
+            print("Spotify session not initialized")
+        }
+      
     }
 }
 

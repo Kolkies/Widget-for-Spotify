@@ -43,6 +43,8 @@ struct SimpleEntry: TimelineEntry {
 
 struct Widget_for_Spotify_WidgetEntryView : View {
     var entry: Provider.Entry
+    
+    @Environment(\.widgetFamily) private var widgetFamily
 
     var body: some View {
         HStack {
@@ -81,6 +83,7 @@ struct Widget_for_Spotify_Widget: Widget {
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
+        .supportedFamilies([.systemSmall])
     }
 }
 

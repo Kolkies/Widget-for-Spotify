@@ -11,10 +11,27 @@ import AppAuth
 
 struct ContentView: View {
     // property of the containing class
-    private var authState: OIDAuthState?
+    @ObservedObject var appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var body: some View {
-        Text("Hello World")
+        VStack{
+            Button(action: {
+                appDelegate.signin()
+                print("login")
+            }){
+                Text("Login")
+            }
+            Button(action: {
+                appDelegate.connect()
+            }){
+                Text("Connect")
+            }
+            Text("")
+            Text("Currently playing:")
+            Text(appDelegate.currentPlayingSong?.name ?? "No Song Playing")
+            Text("By")
+            Text(appDelegate.currentPlayingSong?.artist.name ?? "Not available")
+        }
     }
 }
 

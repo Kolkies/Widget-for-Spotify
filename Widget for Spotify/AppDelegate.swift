@@ -111,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate, SPT
        return manager
     }()
     
-    let requestedScopes: SPTScope = [.appRemoteControl, .userReadCurrentlyPlaying]
+    let requestedScopes: SPTScope = [.appRemoteControl, .userReadCurrentlyPlaying, .userReadPlaybackState]
     
     func signin(){
         self.sessionManager.alwaysShowAuthorizationDialog = true

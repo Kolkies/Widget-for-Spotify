@@ -8,34 +8,15 @@
 
 import Foundation
 
-class SpotifyHandler: ObservableObject {
-    var userDefaults = UserDefaults.init(suiteName: "SpotifyWidget")
-    var accessToken: String
-    var refreshToken: String
-    
-    init(){
-        accessToken = userDefaults?.string(forKey: "accessToken") ?? ""
-        refreshToken = userDefaults?.string(forKey: "refreshToken") ?? ""
-        
-        if(accessToken == ""){
-            print("Loaded SpotifyHandler without propper tokens")
-        }
-    }
-    
-    init(accessToken: String, refreshToken: String){
-        self.accessToken = accessToken
-        self.refreshToken = refreshToken
-        
-        userDefaults?.setValue(accessToken, forKey: "accessToken")
-        userDefaults?.setValue(refreshToken, forKey: "refreshToken")
-    }
-    
+class SpotifyTokenHandler: ObservableObject {
     static func storeTokens(accessToken: String, refreshToken: String){
-        print("Setting up tokens. accessToken: \(accessToken) &&||&& refreshToken:  ")
+        print("Setting up tokens. accessToken: \(accessToken) &&||&& refreshToken: \(refreshToken)")
         let userDefaults = UserDefaults.init(suiteName: "SpotifyWidget")
         userDefaults?.setValue(accessToken, forKey: "accessToken")
         userDefaults?.setValue(refreshToken, forKey: "refreshToken")
     }
+    
+    static func accessToken()
     
     static func refreshToken(){
         // Retrieve token for userdefaults database

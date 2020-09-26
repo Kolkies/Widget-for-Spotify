@@ -7,30 +7,31 @@
 //
 
 import SwiftUI
-import AppAuth
 
 struct ContentView: View {
     // property of the containing class
     @ObservedObject var appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    @ObservedObject var spotifyTokenhandler = SpotifyTokenHandler.shared
+    
     var body: some View {
-        VStack{
+        switch spotifyTokenhandler.authState {
+        case AuthState.SIGNEDIN:
+            MainView()
+        case AuthState.NOTSIGNEDID:
             Button(action: {
                 appDelegate.signin()
                 print("login")
             }){
-                Text("Login")
+                SpotifySignIn()
             }
-            Button(action: {
-                appDelegate.connect()
-            }){
-                Text("Connect")
-            }
-            Text("")
-            Text("Currently playing:")
-            Text(appDelegate.currentPlayingSong?.name ?? "No Song Playing")
-            Text("By")
-            Text(appDelegate.currentPlayingSong?.artist.name ?? "Not available")
+        case AuthState.UNKOWN:
+            Text("Fetching user status. Please wait while we talk to the Spotify servers.")
+                .onAppear{
+                    SpotifyTokenHandler.refreshToken()
+                }
+        default:
+            Text("Unknow")
         }
     }
 }
@@ -38,5 +39,22 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct SpotifySignIn: View{
+    var body: some View{
+        HStack {
+            Image("SpotifyLogo")
+                .resizable()
+                .frame(width: 40, height: 40, alignment: .center)
+                .padding([.top, .leading, .bottom], 12.0)
+            Text("Log in with Spotify")
+                .foregroundColor(.white)
+                .padding([.top, .bottom, .trailing], 12)
+                .padding(.leading, 4.0)
+        }
+        .background(Color.green)
+        .cornerRadius(8.0)
     }
 }

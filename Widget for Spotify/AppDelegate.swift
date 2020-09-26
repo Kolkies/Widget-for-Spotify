@@ -7,13 +7,9 @@
 //
 
 import UIKit
-import AppAuth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, SPTSessionManagerDelegate, ObservableObject {
-    
-    // property of the app's AppDelegate
-    var currentAuthorizationFlow: OIDExternalUserAgentSession?
     
     @Published var spotifySession: SPTSession? = nil
     
@@ -92,12 +88,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate, SPT
     
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         print("Succesfully logged in")
-        spotifySession = session
-        SpotifyHandler.storeTokens(accessToken: session.accessToken, refreshToken: session.refreshToken)
+        DispatchQueue.main.async{
+            self.spotifySession = session
+        }
+        print("Refresh Token: \(session.refreshToken)")
+        SpotifyTokenHandler.storeTokens(accessToken: session.accessToken, refreshToken: session.refreshToken)
+        SpotifyTokenHandler.refreshToken()
     }
     
     func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
-        print("session manager error" + error.localizedDescription)
+        print("session manager error " + error.localizedDescription)
     }
     
     lazy var sessionManager: SPTSessionManager = {
@@ -116,6 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate, SPT
     func signin(){
         self.sessionManager.alwaysShowAuthorizationDialog = true
         self.sessionManager.initiateSession(with: requestedScopes, options: .default)
+        sessionManager.renewSession()
     }
     
     func connect() {

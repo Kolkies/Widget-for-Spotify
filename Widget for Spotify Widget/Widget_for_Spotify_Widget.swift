@@ -81,8 +81,8 @@ struct Widget_for_Spotify_Widget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             Widget_for_Spotify_WidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Widget for Spotify")
+        .description("Displays your current spotify song in a nice iOS 14 Widget")
         .supportedFamilies([.systemSmall])
     }
 }

@@ -23,8 +23,20 @@ struct ContentView: View {
                 appDelegate.signin()
                 print("login")
             }){
-                SpotifySignIn()
+                VStack {
+                    Text("It seems like you aren't signed in with spotify.")
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.black)
+                    Text("Please press the button below to sign in and access this app")
+                        .font(.subheadline)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.black)
+                    SpotifySignIn()
+                }
+                
             }
+            .padding(.horizontal, 40.0)
         case AuthState.UNKOWN:
             Text("Fetching user status. Please wait while we talk to the Spotify servers.")
                 .onAppear{
@@ -45,7 +57,7 @@ struct ContentView_Previews: PreviewProvider {
 struct SpotifySignIn: View{
     var body: some View{
         HStack {
-            Image("SpotifyLogo")
+            Image("SpotifyIconWhite")
                 .resizable()
                 .frame(width: 40, height: 40, alignment: .center)
                 .padding([.top, .leading, .bottom], 12.0)

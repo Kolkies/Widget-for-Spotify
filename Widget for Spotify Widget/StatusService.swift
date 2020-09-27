@@ -9,8 +9,17 @@
 import Foundation
 
 public struct StatusService {
-    public static func getStatus(client: NetworkClient, completion: ((CurrentlyPlayingContext) -> Void)? = nil) {
-        runStatusRequest(.lineStatus, on: client, completion: completion)
+    public static var currentPlayingContextRequest: URLRequest {
+        let url = "https://api.spotify.com/v1/me/player"
+        
+        var request = URLRequest(url: URL(string: url)!)
+        request.setValue("Bearer " + (UserDefaults(suiteName: "group.dev.netlob.widget-for-spotify")?.string(forKey: "accessToken") ?? ""), forHTTPHeaderField: "Authorization")
+        
+        return request
+    }
+    
+    static func getStatus(client: NetworkClient, completion: ((CurrentlyPlayingContext) -> Void)? = nil) {
+        runStatusRequest(currentPlayingContextRequest, on: client, completion: completion)
     }
 
     private static func runStatusRequest(_ request: URLRequest,

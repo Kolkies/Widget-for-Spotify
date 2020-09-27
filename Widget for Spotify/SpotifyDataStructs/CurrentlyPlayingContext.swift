@@ -9,7 +9,7 @@
 import Foundation
 
 /// https://developer.spotify.com/documentation/web-api/reference/player/get-information-about-the-users-current-playback/
-struct CurrentlyPlayingContext: Codable {
+public struct CurrentlyPlayingContext: Codable {
     /// The device that is currently active
     var device: Device
     

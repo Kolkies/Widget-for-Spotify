@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct MainView: View {
     @ObservedObject var spotifyData = SpotifyData.shared
@@ -16,6 +17,11 @@ struct MainView: View {
             NavigationView{
                 VStack{
                     Text("Welkom " + (spotifyData.personInfo?.display_name ?? "Gebruiker"))
+                    Button(action: {
+                        WidgetCenter.shared.reloadAllTimelines()
+                    }){
+                        Text("Restart widget")
+                    }
                 }
                     .navigationBarTitle("Main Page")
             }
@@ -42,9 +48,9 @@ struct MainView: View {
                 Text("Settings")
             }
         }
-//        .onAppear {
-//            SpotifyData.shared.getPersonInfo()
-//        }
+        .onAppear {
+            SpotifyData.shared.getPersonInfo()
+        }
     }
 }
 

@@ -26,7 +26,7 @@ class SpotifyTokenHandler: ObservableObject {
      */
     static func storeTokens(accessToken: String, refreshToken: String){
         print("Setting up tokens. accessToken: \(accessToken) &&||&& refreshToken: \(refreshToken)")
-        let userDefaults = UserDefaults.init(suiteName: "SpotifyWidget")
+        let userDefaults = UserDefaults.init(suiteName: "group.dev.netlob.widget-for-spotify")
         userDefaults?.setValue(accessToken, forKey: "accessToken")
         userDefaults?.setValue(refreshToken, forKey: "refreshToken")
     }
@@ -37,7 +37,7 @@ class SpotifyTokenHandler: ObservableObject {
      - Returns: The optional access Token from database.
      */
     static func accessToken() -> String?{
-        let userDefaults = UserDefaults.init(suiteName: "SpotifyWidget")
+        let userDefaults = UserDefaults.init(suiteName: "group.dev.netlob.widget-for-spotify")
         let token = userDefaults?.string(forKey: "accessToken")
         return token
     }
@@ -48,7 +48,7 @@ class SpotifyTokenHandler: ObservableObject {
      */
     static func refreshToken() -> Void{
         // Retrieve token for userdefaults database
-        let userDefaults = UserDefaults.init(suiteName: "SpotifyWidget")
+        let userDefaults = UserDefaults.init(suiteName: "group.dev.netlob.widget-for-spotify")
         let refreshToken = userDefaults?.string(forKey: "refreshToken")
         // Check if a refresh token is present
         if(refreshToken == "" || refreshToken == nil){

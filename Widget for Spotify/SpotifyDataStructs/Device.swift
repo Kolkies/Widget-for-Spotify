@@ -8,16 +8,25 @@
 
 import Foundation
 
-struct Device {
+struct Device: Codable {
+    /// The device ID. This may be null.
     var id: String?
+    
+    /// If this device is the currently active device.
     var is_active: Bool
-    var is_private_session: Bool
-    var is_restricted: Bool
-    var name: String
-    var type: String
-    var volume_percent: Int?
-}
 
-enum DeviceTypes{
-    case Computer, tablet, Smartphone, Speaker, TV, AVR, STB, AudioDongle, GameConsole, CastVideo, CastAudio, Automobile, Unknown
+    /// If this device is currently in a private session.
+    var is_private_session: Bool
+
+    /// Whether controlling this device is restricted. At present if this is “true” then no Web API commands will be accepted by this device.
+    var is_restricted: Bool
+
+    /// The name of the device.
+    var name: String
+    
+    /// Device type, such as “Computer”, “Smartphone” or “Speaker”.
+    var type: String
+    
+    /// The current volume in percent. This may be null.
+    var volume_percent: Int?
 }

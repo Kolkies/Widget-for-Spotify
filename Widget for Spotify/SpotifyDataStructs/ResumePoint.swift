@@ -1,5 +1,5 @@
 //
-//  Context.swift
+//  ResumePoint.swift
 //  Widget for Spotify
 //
 //  Created by Bram Koene on 26/09/2020.
@@ -8,9 +8,7 @@
 
 import Foundation
 
-struct Context {
-    var uri: String
-    var href: String?
-    var external_urls: [String: String]?
-    var type: String
+struct ResumePoint: Codable {
+    var fully_played: Bool
+    var resume_position_ms: Int
 }

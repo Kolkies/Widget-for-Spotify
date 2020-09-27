@@ -22,16 +22,20 @@ class SpotifyData: ObservableObject {
     private init(){
         print("Fetching data")
         // All methods that should run on launch and can be called from another place to update
-        getCurrentlyPlayingContext()
+        var timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateAllLiveData), userInfo: nil, repeats: true)
         
         // All methods that should run on startup since we need to get their info
         getPersonInfo()
     }
     
+    @objc func updateAllLiveData() -> Void{
+        getCurrentlyPlayingContext()
+    }
+    
     /// Sets the personInfo property
     func getPersonInfo() -> Void {
         let headers: HTTPHeaders = [
-//            "Authorization": "Bearer \(SpotifyTokenHandler.accessToken() ?? "")"
+            "Authorization": "Bearer \(SpotifyTokenHandler.accessToken() ?? "")"
         ]
         
         WidgetCenter.shared.reloadAllTimelines()
@@ -52,14 +56,17 @@ class SpotifyData: ObservableObject {
             "Authorization": "Bearer \(SpotifyTokenHandler.accessToken() ?? "")"
         ]
         
-        WidgetCenter.shared.reloadAllTimelines()
+//        WidgetCenter.shared.reloadAllTimelines()
         
         AF.request("https://api.spotify.com/v1/me/player", headers: headers).response { response in
             if response.data != nil {
-                if let context = try? JSONDecoder().decode(CurrentlyPlayingContext.self, from: response.data!){
+                do {
+                    let context = try JSONDecoder().decode(CurrentlyPlayingContext.self, from: response.data!)
+                    
                     self.currentlyPlayingContext = context
-                    debugPrint(context)
-                    print("Stored playing Data")
+                    
+                } catch {
+                    debugPrint(error)
                 }
             }
         }

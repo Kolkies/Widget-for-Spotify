@@ -38,7 +38,7 @@ public struct CurrentlyPlayingContext: Codable {
     var currently_playing_type: String
     
     /// Allows to update the user interface based on which playback actions are available within the current context
-    var actions: String
+    var actions: [String: [String: Bool]]?
 }
 
 //protocol FullTrackOrFullEpisode: Codable{}

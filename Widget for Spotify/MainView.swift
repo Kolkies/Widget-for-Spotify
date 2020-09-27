@@ -15,13 +15,15 @@ struct MainView: View {
     var body: some View {
         TabView{
             NavigationView{
-                VStack{
+                VStack(spacing: 6.0){
                     Text("Welkom " + (spotifyData.personInfo?.display_name ?? "Gebruiker"))
                     Button(action: {
                         WidgetCenter.shared.reloadAllTimelines()
                     }){
                         Text("Restart widget")
                     }
+                    
+                    SimpleMusicView()
                 }
                     .navigationBarTitle("Main Page")
             }

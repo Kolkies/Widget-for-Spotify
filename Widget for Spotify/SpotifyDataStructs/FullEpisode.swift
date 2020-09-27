@@ -37,7 +37,7 @@ struct FullEpisode: Codable {
     var is_externally_hosted: Bool
     
     /// True if the episode is playable in the given market. Otherwise false.
-    var is_playable: Bool
+    var is_playable: Bool?
     
     /// A list of the languages used in the episode, identified by their ISO 639 code.
     var languages: [String]

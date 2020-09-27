@@ -9,10 +9,11 @@
 import WidgetKit
 import SwiftUI
 import Intents
-import URLImage
+import Kingfisher
+import struct KingfisherSwiftUI.KFImage
 import Combine
 
-var exampleCurrentlyPlaying = CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: "None")
+var exampleCurrentlyPlaying = CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: nil)
 
 // Creating model for JSON data...
 
@@ -20,6 +21,7 @@ struct Model : TimelineEntry {
     var date: Date
     var widgetData: CurrentlyPlayingContext
     let configuration: ConfigurationIntent
+    let albumImage: Kingfisher.KFCrossPlatformImage?
 }
 
 struct Provider: IntentTimelineProvider {
@@ -28,54 +30,55 @@ struct Provider: IntentTimelineProvider {
     public typealias Intent = ConfigurationIntent
     
     public func placeholder(in context: Context) -> Model {
-        return Model(date: Date(), widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: "None"), configuration: ConfigurationIntent())
+        return Model(date: Date(), widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: nil), configuration: ConfigurationIntent(), albumImage: nil)
     }
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Model) -> Void) {
-        let loadingData = Model(date: Date(), widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: "None"), configuration: ConfigurationIntent())
+        let loadingData = Model(date: Date(), widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: nil), configuration: ConfigurationIntent(), albumImage: nil)
         completion(loadingData)
     }
     
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Model>) -> Void) {
         // Parsing json data and displaying...
-        
-        DataFetcher.shared.GetCurrentlyPlayingContextWidget {(modelData) in
-            let nextUpdate = Calendar.current.date(byAdding: .minute, value: 1, to: Date())
-            
-            let data = Model(date: nextUpdate!, widgetData: modelData ?? exampleCurrentlyPlaying, configuration: ConfigurationIntent())
-            
-            let timeline = Timeline(entries: [data], policy: .atEnd)
-            
-            completion(timeline)
-        }
+        print("Updating Timeline")
         
         StatusService.getStatus(client: NetworkClient()){ updates in
-            let nextUpdate = Calendar.current.date(byAdding: .minute, value: 1, to: Date())
-            
-            let data = Model(date: nextUpdate!, widgetData: updates, configuration: ConfigurationIntent())
-            
-            let timeline = Timeline(entries: [data], policy: .atEnd)
-            
-            completion(timeline)
+            KingfisherManager.shared.retrieveImage(with: URL(string: (updates.item?.album.images[0].url)!)!){ result in
+                debugPrint(result)
+                switch result{
+                case .success(let value):
+                    debugPrint(value)
+                    
+                    let nextUpdate = Calendar.current.date(byAdding: .second, value: 5, to: Date())
+
+                    let data = Model(date: nextUpdate!, widgetData: updates, configuration: ConfigurationIntent(), albumImage: value.image)
+
+                    let timeline = Timeline(entries: [data], policy: .atEnd)
+
+                    completion(timeline)
+                case .failure(let error):
+                    print(error)
+                }
+                
+                
+            }
         }
     }
 }
 
-struct Widget_for_Spotify_WidgetEntryView : View {
+struct CurrentPlayingWidgetEntryView : SwiftUI.View {
     @Environment(\.widgetFamily) private var widgetFamily
 
     var data: Model
     
-    var body: some View{
+    var body: some SwiftUI.View{
         HStack {
             VStack(alignment: .leading, spacing: 3.0) {
                 if(data.widgetData.item != nil){
-                    URLImage(URL(string: "") ?? URL(string: "")!, placeholder: Image("PreviewArtAsset")){ proxy in
-                        proxy.image
+                    Image(uiImage: (data.albumImage?.imageWithoutBaseline())!)
                             .resizable()
                             .scaledToFit()
                             .cornerRadius(10)
                             .shadow(color: .black, radius: 2, x: 2, y: 2)
-                    }
                 } else {
                     Image("PreviewArtAsset")
                         .resizable()
@@ -107,10 +110,11 @@ struct CurrentPlayingWidget: Widget {
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            Widget_for_Spotify_WidgetEntryView(data: entry)
+            CurrentPlayingWidgetEntryView(data: entry)
         }
         .configurationDisplayName("Spotify Widget")
         .description("Widget to show spotify Data")
+        .supportedFamilies([.systemSmall])
     }
 }
 
@@ -137,15 +141,6 @@ public class DataFetcher : ObservableObject{
             completion(response)
         }
         .store(in: &cancellable)
-    }
-}
-
-@main
-struct SpotifyWidgetBundle: WidgetBundle {
-    @WidgetBundleBuilder
-    var body: some Widget {
-        //AddYourWidgetHere()
-        CurrentPlayingWidget()
     }
 }
 

@@ -14,6 +14,7 @@
 		1E8D2000251BDB2D00343593 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8D1FFF251BDB2D00343593 /* Preview Assets.xcassets */; };
 		1E8D2003251BDB2D00343593 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8D2001251BDB2D00343593 /* LaunchScreen.storyboard */; };
 		F43B1569251F9D6100E95BB1 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F472C1B3251C695E000E7318 /* SpotifyiOS.framework */; };
+		F45C602125210997005088B4 /* WidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C602025210997005088B4 /* WidgetBundle.swift */; };
 		F462CA92251FA894001FCF7B /* SpotifyContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E71F2251F86BB0012780C /* SpotifyContext.swift */; };
 		F462CA93251FA894001FCF7B /* FullEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E71FE251F8C560012780C /* FullEpisode.swift */; };
 		F462CA94251FA894001FCF7B /* Followers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E71E9251F76440012780C /* Followers.swift */; };
@@ -64,6 +65,11 @@
 		F48E723E251F967E0012780C /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F48E723D251F967E0012780C /* SwiftyJSON */; };
 		F4B96EB52520D114002A1F6F /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96EB42520D114002A1F6F /* NetworkClient.swift */; };
 		F4B96EB82520D13C002A1F6F /* StatusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96EB72520D13C002A1F6F /* StatusService.swift */; };
+		F4B96EBF2520E122002A1F6F /* SimpleMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96EBE2520E122002A1F6F /* SimpleMusicView.swift */; };
+		F4B96EC12520E124002A1F6F /* SimpleMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96EBE2520E122002A1F6F /* SimpleMusicView.swift */; };
+		F4B96EC32520E3F5002A1F6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8D1FFC251BDB2D00343593 /* Assets.xcassets */; };
+		F4B96EC92520E72A002A1F6F /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F4B96EC82520E72A002A1F6F /* KingfisherSwiftUI */; };
+		F4B96ECF2520E73B002A1F6F /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F4B96ECE2520E73B002A1F6F /* KingfisherSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +105,16 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F4B96ED52520E73B002A1F6F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +127,7 @@
 		1E8D2002251BDB2D00343593 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E8D2004251BDB2D00343593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F43B155F251F997700E95BB1 /* Widget for Spotify WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Widget for Spotify WidgetExtension.entitlements"; sourceTree = "<group>"; };
+		F45C602025210997005088B4 /* WidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBundle.swift; sourceTree = "<group>"; };
 		F472C1AD251C66A9000E7318 /* Widget-For-Spotify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Widget-For-Spotify-Bridging-Header.h"; sourceTree = "<group>"; };
 		F472C1B3251C695E000E7318 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		F472C1BF251C8DA1000E7318 /* Widget for Spotify.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Widget for Spotify.entitlements"; sourceTree = "<group>"; };
@@ -140,6 +157,7 @@
 		F4B3B5DA251BF5E300570A97 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F4B96EB42520D114002A1F6F /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		F4B96EB72520D13C002A1F6F /* StatusService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusService.swift; sourceTree = "<group>"; };
+		F4B96EBE2520E122002A1F6F /* SimpleMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMusicView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B96EC92520E72A002A1F6F /* KingfisherSwiftUI in Frameworks */,
 				F48E71D6251F41DA0012780C /* SwiftyJSON in Frameworks */,
 				F472C1DD251E795F000E7318 /* Alamofire in Frameworks */,
 				F462CAAD251FC69D001FCF7B /* URLImage in Frameworks */,
@@ -163,6 +182,7 @@
 				F48E7226251F959C0012780C /* SwiftUI.framework in Frameworks */,
 				F48E723E251F967E0012780C /* SwiftyJSON in Frameworks */,
 				F462CAB0251FC6A7001FCF7B /* URLImage in Frameworks */,
+				F4B96ECF2520E73B002A1F6F /* KingfisherSwiftUI in Frameworks */,
 				F48E7225251F959C0012780C /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +214,7 @@
 		1E8D1FF5251BDB2B00343593 /* Widget for Spotify */ = {
 			isa = PBXGroup;
 			children = (
+				F4B96EBD2520E0EB002A1F6F /* Views */,
 				F48E71E2251F756B0012780C /* SpotifyDataStructs */,
 				F472C1BF251C8DA1000E7318 /* Widget for Spotify.entitlements */,
 				1E8D1FF6251BDB2B00343593 /* AppDelegate.swift */,
@@ -219,6 +240,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		F45C6022252109C1005088B4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F4B96EB42520D114002A1F6F /* NetworkClient.swift */,
+				F4B96EB72520D13C002A1F6F /* StatusService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		F48E71E2251F756B0012780C /* SpotifyDataStructs */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,12 +272,12 @@
 		F48E7227251F959D0012780C /* Widget for Spotify Widget */ = {
 			isa = PBXGroup;
 			children = (
+				F45C6022252109C1005088B4 /* Network */,
 				F48E7237251F95D00012780C /* Widget_for_Spotify_Widget.swift */,
 				F48E722A251F959D0012780C /* Widget_for_Spotify_Widget.intentdefinition */,
 				F48E722B251F959E0012780C /* Assets.xcassets */,
 				F48E722D251F959E0012780C /* Info.plist */,
-				F4B96EB42520D114002A1F6F /* NetworkClient.swift */,
-				F4B96EB72520D13C002A1F6F /* StatusService.swift */,
+				F45C602025210997005088B4 /* WidgetBundle.swift */,
 			);
 			path = "Widget for Spotify Widget";
 			sourceTree = "<group>";
@@ -260,6 +290,14 @@
 				F4B3B5DA251BF5E300570A97 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4B96EBD2520E0EB002A1F6F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F4B96EBE2520E122002A1F6F /* SimpleMusicView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,6 +334,7 @@
 				F472C1DC251E795F000E7318 /* Alamofire */,
 				F48E71D5251F41DA0012780C /* SwiftyJSON */,
 				F462CAAC251FC69D001FCF7B /* URLImage */,
+				F4B96EC82520E72A002A1F6F /* KingfisherSwiftUI */,
 			);
 			productName = "Widget for Spotify";
 			productReference = 1E8D1FF3251BDB2B00343593 /* Widget for Spotify.app */;
@@ -309,6 +348,7 @@
 				F48E7220251F959C0012780C /* Sources */,
 				F48E7221251F959C0012780C /* Frameworks */,
 				F48E7222251F959C0012780C /* Resources */,
+				F4B96ED52520E73B002A1F6F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -319,6 +359,7 @@
 				F48E723B251F967E0012780C /* Alamofire */,
 				F48E723D251F967E0012780C /* SwiftyJSON */,
 				F462CAAF251FC6A7001FCF7B /* URLImage */,
+				F4B96ECE2520E73B002A1F6F /* KingfisherSwiftUI */,
 			);
 			productName = "Widget for Spotify WidgetExtension";
 			productReference = F48E7224251F959C0012780C /* Widget for Spotify WidgetExtension.appex */;
@@ -355,6 +396,7 @@
 				F472C1DB251E795F000E7318 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				F48E71D4251F41DA0012780C /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				F462CAAB251FC69D001FCF7B /* XCRemoteSwiftPackageReference "url-image" */,
+				F4B96EC52520E72A002A1F6F /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 1E8D1FF4251BDB2B00343593 /* Products */;
 			projectDirPath = "";
@@ -381,6 +423,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B96EC32520E3F5002A1F6F /* Assets.xcassets in Resources */,
 				F48E722C251F959E0012780C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,6 +471,7 @@
 				F48E71F6251F872B0012780C /* FullTrack.swift in Sources */,
 				F48E71ED251F858C0012780C /* CurrentlyPlayingContext.swift in Sources */,
 				F48E71D8251F44550012780C /* SpotifyData.swift in Sources */,
+				F4B96EBF2520E122002A1F6F /* SimpleMusicView.swift in Sources */,
 				F472C1D1251E32C6000E7318 /* SpotifyTokenHandler.swift in Sources */,
 				F48E71E7251F75F20012780C /* PersonInfo.swift in Sources */,
 				1E8D1FF9251BDB2B00343593 /* SceneDelegate.swift in Sources */,
@@ -445,7 +489,9 @@
 				F462CA93251FA894001FCF7B /* FullEpisode.swift in Sources */,
 				F4B96EB82520D13C002A1F6F /* StatusService.swift in Sources */,
 				F462CA98251FA894001FCF7B /* ResumePoint.swift in Sources */,
+				F45C602125210997005088B4 /* WidgetBundle.swift in Sources */,
 				F462CA99251FA894001FCF7B /* FullTrack.swift in Sources */,
+				F4B96EC12520E124002A1F6F /* SimpleMusicView.swift in Sources */,
 				F462CA97251FA894001FCF7B /* CurrentlyPlayingContext.swift in Sources */,
 				F462CAA0251FA8D8001FCF7B /* SpotifyData.swift in Sources */,
 				F48E7238251F95D00012780C /* Widget_for_Spotify_Widget.swift in Sources */,
@@ -770,6 +816,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		F4B96EC52520E72A002A1F6F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.15.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -802,6 +856,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F48E71D4251F41DA0012780C /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		F4B96EC82520E72A002A1F6F /* KingfisherSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4B96EC52520E72A002A1F6F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = KingfisherSwiftUI;
+		};
+		F4B96ECE2520E73B002A1F6F /* KingfisherSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4B96EC52520E72A002A1F6F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = KingfisherSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

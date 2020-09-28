@@ -49,11 +49,12 @@ struct Provider: IntentTimelineProvider {
                     case .success(let value):
                         debugPrint(value)
                         
-                        let nextUpdate = Calendar.current.date(byAdding: .second, value: 5, to: Date())
+                        let nextUpdate = Calendar.current.date(byAdding: .second, value: Int(truncating: configuration.refreshTime ?? 30), to: Date())
 
                         let data = Model(date: nextUpdate!, widgetData: updates!, configuration: ConfigurationIntent(), albumImage: value.image, playlistName: nil)
 
-                        let timeline = Timeline(entries: [data], policy: .after(nextUpdate!))
+                        let tomorrow = Calendar.current.date(byAdding: .second, value: 20, to: Date())!
+                        let timeline = Timeline(entries: [data], policy: .after(tomorrow))
 
                         completion(timeline)
                     case .failure(let error):
@@ -64,7 +65,7 @@ struct Provider: IntentTimelineProvider {
                 }
             } else {
                 
-                let nextUpdate = Calendar.current.date(byAdding: .second, value: 5, to: Date())
+                let nextUpdate = Calendar.current.date(byAdding: .second, value: Int(truncating: (configuration.refreshTime ?? 30)), to: Date())
 
                 let data = Model(date: nextUpdate!, widgetData: updates!, configuration: ConfigurationIntent(), albumImage: nil, playlistName: nil)
 

@@ -30,6 +30,8 @@ class SpotifyData: ObservableObject {
     
     @objc func updateAllLiveData() -> Void{
         getCurrentlyPlayingContext()
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     /// Sets the personInfo property

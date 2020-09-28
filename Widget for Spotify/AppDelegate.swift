@@ -8,6 +8,7 @@
 
 import UIKit
 import WidgetKit
+import BackgroundTasks
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, SPTSessionManagerDelegate, ObservableObject {
@@ -21,8 +22,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTSessionManagerDelegate
       clientID: SpotifyClientID,
       redirectURL: SpotifyRedirectURL
     )
+    
+    func handleAppRefresh(task: BGAppRefreshTask){
+        task.expirationHandler = {
+            WidgetCenter.shared.reloadAllTimelines()
+        }
+    }
+    
+    func scheduleBackgroundFetch() {
+        let fetchTask = BGAppRefreshTaskRequest(identifier: "dev.netlob.widget-for-spotify.refresh-widget")
+        fetchTask.earliestBeginDate = Date(timeIntervalSinceNow: 60)
+        DispatchQueue.main.async {
+            do {
+              try BGTaskScheduler.shared.submit(fetchTask)
+            } catch {
+              print("Unable to submit task: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func handleAppRefreshTask(task: BGAppRefreshTask) {
+        task.expirationHandler = {
+            task.setTaskCompleted(success: false)
+            WidgetCenter.shared.reloadAllTimelines()
+        }
+        
+        WidgetCenter.shared.reloadAllTimelines()
+        scheduleBackgroundFetch()
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: "dev.netlob.widget-for-spotify.refresh-widget", using: nil) { task in
+             self.handleAppRefresh(task: task as! BGAppRefreshTask)
+        }
+        
         // Override point for customization after application launch.
         let item = launchOptions?[.shortcutItem]
         if let shortcut = item as? UIApplicationShortcutItem {

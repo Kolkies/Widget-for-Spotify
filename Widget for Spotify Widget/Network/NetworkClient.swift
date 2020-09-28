@@ -9,6 +9,7 @@
 import Foundation
 
 public final class NetworkClient {
+//    private let session: URLSession = .init(configuration: .background(withIdentifier: "CurrentlyPlaying"))
     private let session: URLSession = .shared
 
     enum NetworkError: Error {

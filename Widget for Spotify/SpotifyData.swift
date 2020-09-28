@@ -22,7 +22,7 @@ class SpotifyData: ObservableObject {
     private init(){
         print("Fetching data")
         // All methods that should run on launch and can be called from another place to update
-        var timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateAllLiveData), userInfo: nil, repeats: true)
+        _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateAllLiveData), userInfo: nil, repeats: true)
         
         // All methods that should run on startup since we need to get their info
         getPersonInfo()

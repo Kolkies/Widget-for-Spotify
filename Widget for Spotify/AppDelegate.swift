@@ -7,32 +7,32 @@
 //
 
 import UIKit
+import WidgetKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, SPTSessionManagerDelegate, ObservableObject {
+class AppDelegate: UIResponder, UIApplicationDelegate, SPTSessionManagerDelegate, ObservableObject {
     
     @Published var spotifySession: SPTSession? = nil
-    
-    @Published var currentPlayingSong: SPTAppRemoteTrack? = nil
 
     let SpotifyClientID = "280335d60c1a4ae8a4d3f5ff344e8e16"
     let SpotifyRedirectURL = URL(string: "widget-for-spotify://spotify-login-callback")!
-    var accessToken: String = "";
 
     lazy var configuration = SPTConfiguration(
       clientID: SpotifyClientID,
       redirectURL: SpotifyRedirectURL
     )
-    
-    lazy var appRemote: SPTAppRemote = {
-      let appRemote = SPTAppRemote(configuration: self.configuration, logLevel: .debug)
-       appRemote.connectionParameters.accessToken = self.sessionManager.session?.accessToken
-      appRemote.delegate = self
-      return appRemote
-    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let item = launchOptions?[.shortcutItem]
+        if let shortcut = item as? UIApplicationShortcutItem {
+            if(shortcut.type == "dev.netlob.widget-for-spotify-refreshwidget"){
+                WidgetCenter.shared.reloadAllTimelines()
+                return true
+            } else {
+                return false
+            }
+        }
         return true
     }
 
@@ -49,6 +49,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate, SPT
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem) -> Bool{
+        if(shortcutItem.type == "dev.netlob.widget-for-spotify-refreshwidget"){
+            WidgetCenter.shared.reloadAllTimelines()
+            return true
+        } else {
+            return false
+        }
+    }
 
     func application(_ app: UIApplication,
                      open url: URL,
@@ -57,33 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate, SPT
         self.sessionManager.application(app, open: url, options: options)
         
         return true
-    }
-    
-    func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
-      print("disconnected")
-    }
-    
-    func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
-      print("failed")
-    }
-    
-    func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
-      // Connection was successful, you can begin issuing commands
-        print("AppRemote succesfully connected")
-      self.appRemote.playerAPI?.delegate = self
-      self.appRemote.playerAPI?.subscribe(toPlayerState: { (result, error) in
-        if let result = result {
-            print(result)
-        }
-        if let error = error {
-          debugPrint(error.localizedDescription)
-        }
-      })
-    }
-    
-    func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
-        print("Track name: %@", playerState.track.name)
-        self.currentPlayingSong = playerState.track
     }
     
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
@@ -118,19 +100,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate, SPT
         self.sessionManager.initiateSession(with: requestedScopes, options: .default)
         sessionManager.renewSession()
     }
-    
-    func connect() {
-        if(spotifySession != nil){
-            self.appRemote.authorizeAndPlayURI("")
-            self.appRemote.connect()
-        }else{
-            print("Spotify session not initialized")
-        }
-      
-    }
-}
-
-struct spotifyData: Codable{
-    var name: String
 }
 

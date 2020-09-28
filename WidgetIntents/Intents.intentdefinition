@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>INEnums</key>
+	<array/>
+	<key>INIntentDefinitionModelVersion</key>
+	<string>1.2</string>
+	<key>INIntentDefinitionNamespace</key>
+	<string>WNYlWp</string>
+	<key>INIntentDefinitionSystemVersion</key>
+	<string>19G2021</string>
+	<key>INIntentDefinitionToolsBuildVersion</key>
+	<string>12A7300</string>
+	<key>INIntentDefinitionToolsVersion</key>
+	<string>12.0.1</string>
+	<key>INIntents</key>
+	<array>
+		<dict>
+			<key>INIntentCategory</key>
+			<string>generic</string>
+			<key>INIntentConfigurable</key>
+			<true/>
+			<key>INIntentDefaultImageName</key>
+			<string>dancing-banana</string>
+			<key>INIntentDescription</key>
+			<string>Refreshes all Widget for Spotify Widgets</string>
+			<key>INIntentDescriptionID</key>
+			<string>6FrrIi</string>
+			<key>INIntentManagedParameterCombinations</key>
+			<dict>
+				<key></key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Refresh all Spotify Widgets</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>CyR7kt</string>
+				</dict>
+			</dict>
+			<key>INIntentName</key>
+			<string>RefreshWidget</string>
+			<key>INIntentParameterCombinations</key>
+			<dict>
+				<key></key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Refresh all Spotify Widgets</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>E2giNr</string>
+				</dict>
+			</dict>
+			<key>INIntentResponse</key>
+			<dict>
+				<key>INIntentResponseCodes</key>
+				<array>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>Refreshed Widgets</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>U3lAvo</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>Succesfully Refreshed Widgets</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>3VF1WH</string>
+						<key>INIntentResponseCodeName</key>
+						<string>success</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>failed to refresh widgets</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>FKKKBv</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>Failed to refresh widgets</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>inQWbV</string>
+						<key>INIntentResponseCodeName</key>
+						<string>failure</string>
+					</dict>
+				</array>
+				<key>INIntentResponseLastParameterTag</key>
+				<integer>2</integer>
+				<key>INIntentResponseOutput</key>
+				<string>succes</string>
+				<key>INIntentResponseParameters</key>
+				<array>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>Succes</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>itmUfl</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>1</integer>
+						<key>INIntentResponseParameterMetadata</key>
+						<dict>
+							<key>INIntentResponseParameterMetadataFalseDisplayName</key>
+							<string>Succes</string>
+							<key>INIntentResponseParameterMetadataFalseDisplayNameID</key>
+							<string>G11c2U</string>
+							<key>INIntentResponseParameterMetadataTrueDisplayName</key>
+							<string>Error</string>
+							<key>INIntentResponseParameterMetadataTrueDisplayNameID</key>
+							<string>nNfDwa</string>
+						</dict>
+						<key>INIntentResponseParameterName</key>
+						<string>succes</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>Boolean</string>
+					</dict>
+				</array>
+			</dict>
+			<key>INIntentTitle</key>
+			<string>Refresh Widget</string>
+			<key>INIntentTitleID</key>
+			<string>yrU55o</string>
+			<key>INIntentType</key>
+			<string>Custom</string>
+			<key>INIntentVerb</key>
+			<string>Do</string>
+		</dict>
+	</array>
+	<key>INTypes</key>
+	<array/>
+</dict>
+</plist>

@@ -22,8 +22,12 @@ struct MainView: View {
                     }){
                         Text("Restart widget")
                     }
-                    
-                    SimpleMusicView()
+                    Spacer()
+                    Button(action: {
+                        UIPasteboard.general.string = SpotifyTokenHandler.accessToken() ?? ""
+                    }){
+                        Text("Copy accessToken to clipboard")
+                    }
                 }
                     .navigationBarTitle("Main Page")
             }

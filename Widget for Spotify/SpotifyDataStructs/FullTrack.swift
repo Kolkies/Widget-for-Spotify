@@ -40,7 +40,7 @@ struct FullTrack: Codable {
     var id: String
     
     /// Part of the response when Track Relinking is applied. If true , the track is playable in the given market. Otherwise false.
-    var is_playable: Bool
+    var is_playable: Bool?
     
     /// Part of the response when Track Relinking is applied, and the requested track has been replaced with different track. The track in the linked_from object contains information about the originally requested track.
     var linked_from: String?

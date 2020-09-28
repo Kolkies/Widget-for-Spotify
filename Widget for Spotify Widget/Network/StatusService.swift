@@ -18,7 +18,7 @@ public struct StatusService {
         return request
     }
     
-    static func getStatus(client: NetworkClient, completion: ((CurrentlyPlayingContext) -> Void)? = nil) {
+    static func getStatus(client: NetworkClient, completion: ((CurrentlyPlayingContext?) -> Void)? = nil) {
         runStatusRequest(currentPlayingContextRequest, on: client, completion: completion)
     }
 
@@ -30,8 +30,14 @@ public struct StatusService {
             case .success(let data):
                 let decoder = JSONDecoder()
                 do {
-                    let lineStatus = try decoder.decode(CurrentlyPlayingContext.self, from: data)
-                    completion?(lineStatus)
+                    debugPrint(data.count == 0)
+                    if (data.count != 0) {
+                        let lineStatus = try decoder.decode(CurrentlyPlayingContext.self, from: data)
+                        completion?(lineStatus)
+                    } else {
+                        let nothingPlaying = CurrentlyPlayingContext(device: Device(is_active: false, is_private_session: false, is_restricted: false, name: "Nothing Playing", type: "Nothing Playing"), repeat_state: "none", shuffle_state: false, timestamp: 0, is_playing: false, currently_playing_type: "Nothing")
+                        completion?(nothingPlaying)
+                    }
                 } catch {
                     print(error.localizedDescription)
                 }

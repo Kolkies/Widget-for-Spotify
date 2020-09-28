@@ -28,6 +28,11 @@ struct MainView: View {
                         }
                         .navigationBarTitle("Home")
                         Spacer()
+                        Button(action: {
+                            UIPasteboard.general.string = SpotifyTokenHandler.accessToken() ?? ""
+                        }){
+                            Text("Copy accessToken to clipboard")
+                        }
                     }
                     .padding(.horizontal, 15)
                 }

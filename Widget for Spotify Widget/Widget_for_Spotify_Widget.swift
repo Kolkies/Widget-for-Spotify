@@ -9,10 +9,9 @@
 import WidgetKit
 import SwiftUI
 import Intents
-import URLImage
+import Kingfisher
+import struct KingfisherSwiftUI.KFImage
 import Combine
-
-var exampleCurrentlyPlaying = CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: "None")
 
 // Creating model for JSON data...
 
@@ -20,6 +19,8 @@ struct Model : TimelineEntry {
     var date: Date
     var widgetData: CurrentlyPlayingContext
     let configuration: ConfigurationIntent
+    let albumImage: Kingfisher.KFCrossPlatformImage?
+    let playlistName: String?
 }
 
 struct Provider: IntentTimelineProvider {
@@ -28,75 +29,159 @@ struct Provider: IntentTimelineProvider {
     public typealias Intent = ConfigurationIntent
     
     public func placeholder(in context: Context) -> Model {
-        return Model(date: Date(), widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: "None"), configuration: ConfigurationIntent())
+        return Model(date: Date(), widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: nil), configuration: ConfigurationIntent(), albumImage: nil, playlistName: nil)
     }
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Model) -> Void) {
-        let loadingData = Model(date: Date(), widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: "None"), configuration: ConfigurationIntent())
+        let loadingData = Model(date: Date(), widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: nil), configuration: ConfigurationIntent(), albumImage: nil, playlistName: nil)
         completion(loadingData)
     }
     
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Model>) -> Void) {
         // Parsing json data and displaying...
-        
-        DataFetcher.shared.GetCurrentlyPlayingContextWidget {(modelData) in
-            let nextUpdate = Calendar.current.date(byAdding: .minute, value: 1, to: Date())
-            
-            let data = Model(date: nextUpdate!, widgetData: modelData ?? exampleCurrentlyPlaying, configuration: ConfigurationIntent())
-            
-            let timeline = Timeline(entries: [data], policy: .atEnd)
-            
-            completion(timeline)
-        }
+        print("Updating Timeline")
         
         StatusService.getStatus(client: NetworkClient()){ updates in
-            let nextUpdate = Calendar.current.date(byAdding: .minute, value: 1, to: Date())
+            debugPrint(updates!)
+            if((updates?.is_playing) == true){
+                KingfisherManager.shared.retrieveImage(with: URL(string: (updates?.item?.album.images[0].url)!)!){ result in
+                    debugPrint(result)
+                    switch result{
+                    case .success(let value):
+                        debugPrint(value)
+                        
+                        let nextUpdate = Calendar.current.date(byAdding: .second, value: Int(truncating: configuration.refreshTime ?? 30), to: Date())
+
+                        let data = Model(date: nextUpdate!, widgetData: updates!, configuration: ConfigurationIntent(), albumImage: value.image, playlistName: nil)
+
+                        let tomorrow = Calendar.current.date(byAdding: .second, value: 20, to: Date())!
+                        let timeline = Timeline(entries: [data], policy: .after(tomorrow))
+
+                        completion(timeline)
+                    case .failure(let error):
+                        print(error)
+                    }
+                    
+                    
+                }
+            } else {
+                
+                let nextUpdate = Calendar.current.date(byAdding: .second, value: Int(truncating: (configuration.refreshTime ?? 30)), to: Date())
+
+                let data = Model(date: nextUpdate!, widgetData: updates!, configuration: ConfigurationIntent(), albumImage: nil, playlistName: nil)
+
+                let timeline = Timeline(entries: [data], policy: .after(nextUpdate!))
+
+                completion(timeline)
+            }
             
-            let data = Model(date: nextUpdate!, widgetData: updates, configuration: ConfigurationIntent())
-            
-            let timeline = Timeline(entries: [data], policy: .atEnd)
-            
-            completion(timeline)
         }
     }
 }
 
-struct Widget_for_Spotify_WidgetEntryView : View {
-    @Environment(\.widgetFamily) private var widgetFamily
+struct CurrentPlayingWidgetEntryView : SwiftUI.View {
+    @Environment(\.widgetFamily) var family
 
     var data: Model
     
-    var body: some View{
+    var body: some SwiftUI.View{
         HStack {
-            VStack(alignment: .leading, spacing: 3.0) {
-                if(data.widgetData.item != nil){
-                    URLImage(URL(string: "") ?? URL(string: "")!, placeholder: Image("PreviewArtAsset")){ proxy in
-                        proxy.image
-                            .resizable()
-                            .scaledToFit()
-                            .cornerRadius(10)
-                            .shadow(color: .black, radius: 2, x: 2, y: 2)
+            switch family{
+            case .systemSmall:
+                HStack {
+                    VStack(alignment: .leading, spacing: 3.0) {
+                        if(data.widgetData.item != nil && data.albumImage != nil){
+                            Image(uiImage: (data.albumImage?.imageWithoutBaseline())!)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .cornerRadius(10)
+                                    .shadow(color: .black, radius: 2, x: 2, y: 2)
+                        } else {
+                            Image(data.widgetData.device.name == "Nothing Playing" ? "SpotifyIconGreen" : "PreviewArtAsset")
+                                .resizable()
+                                .scaledToFit()
+                                .cornerRadius(10)
+                                .shadow(color: .black, radius: data.widgetData.device.name == "Nothing Playing" ? 0 : 2, x: data.widgetData.device.name == "Nothing Playing" ? 0 : 2, y: data.widgetData.device.name == "Nothing Playing" ? 0 : 2)
+                        }
+                        
+                        Text(data.widgetData.item?.name ?? "No Song Playing")
+                            .font(.subheadline)
+                            .fontWeight(.bold)
+                            .multilineTextAlignment(.leading)
+                            .padding(.top, 3.0)
+                        Text(data.widgetData.device.name)
+                            .font(.footnote)
                     }
-                } else {
-                    Image("PreviewArtAsset")
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(10)
-                        .shadow(color: .black, radius: 2, x: 2, y: 2)
+                    .padding(.vertical, 12.0)
+                    .padding(.horizontal, 15.0)
+        //            .padding(.bottom, 10.0)
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+                    Spacer()
                 }
+            case .systemMedium:
+                HStack{
+                    VStack{
+                        if(data.widgetData.item != nil && data.albumImage != nil){
+                            Image(uiImage: (data.albumImage?.imageWithoutBaseline())!)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .cornerRadius(10)
+                                    .shadow(color: .black, radius: 2, x: 2, y: 2)
+                        } else {
+                            Image(data.widgetData.device.name == "Nothing Playing" ? "SpotifyIconGreen" : "PreviewArtAsset")
+                                .resizable()
+                                .scaledToFit()
+                                .cornerRadius(10)
+                                .padding(.bottom, 15)
+                                .padding(.horizontal, 2)
+                                .shadow(color: .black, radius: data.widgetData.device.name == "Nothing Playing" ? 0 : 2, x: data.widgetData.device.name == "Nothing Playing" ? 0 : 2, y: data.widgetData.device.name == "Nothing Playing" ? 0 : 2)
+                        }
+                        
+                        Spacer()
+                    }
+                    
+                    VStack{
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text("Now Playing: ")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.leading)
+                            Text(data.widgetData.item?.name ?? "No Song Playing")
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .multilineTextAlignment(.leading)
+                                .padding(.top, 2.0)
+                            Text(data.playlistName ?? data.widgetData.item?.album.name ?? "")
+                                .font(.subheadline)
+                                .fontWeight(.regular)
+                            Text(data.widgetData.device.name)
+                                .font(.footnote)
+                                .fontWeight(.light)
+                        }
+                        Spacer()
+                        HStack{
+                            Image(systemName: "shuffle")
+                                .foregroundColor(data.widgetData.shuffle_state ? .green : .gray)
+                            if((data.widgetData.item?.explicit) != nil && data.widgetData.item?.explicit == true){
+                                Image(systemName: "e.square.fill")
+                                    .foregroundColor(.black)
+                            }
+                        }
+                    }
+                    .padding(.leading, 5)
+                        
+                }
+                .padding(.vertical, 12.0)
+                .padding(.horizontal, 15.0)
+    //            .padding(.bottom, 10.0)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
                 
-                Text(data.widgetData.item?.name ?? "No Song Playing")
-                    .font(.subheadline)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.leading)
-                    .padding(.top, 3.0)
-                Text(data.widgetData.device.name)
-                    .font(.footnote)
+            case .systemLarge:
+                HStack{
+                    
+                }
+            @unknown default:
+                Text("An unknown error occured")
             }
-            .padding(.vertical, 12.0)
-            .padding(.horizontal, 15.0)
-//            .padding(.bottom, 10.0)
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-            Spacer()
         }
         .background(data.widgetData.item != nil ? Color("BackgroundColor") : Color("BackgroundColor"))
     }
@@ -107,75 +192,14 @@ struct CurrentPlayingWidget: Widget {
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            Widget_for_Spotify_WidgetEntryView(data: entry)
+            CurrentPlayingWidgetEntryView(data: entry)
         }
         .configurationDisplayName("Spotify Widget")
         .description("Widget to show spotify Data")
-    }
-}
-
-public class DataFetcher : ObservableObject{
-    
-    var cancellable : Set<AnyCancellable> = Set()
-    
-    static let shared = DataFetcher()
-    
-    func GetCurrentlyPlayingContextWidget(completion: @escaping (CurrentlyPlayingContext?) -> Void){
-        let url = "https://api.spotify.com/v1/me/player"
-        
-        var request = URLRequest(url: URL(string: url)!)
-        request.setValue("Bearer " + (UserDefaults(suiteName: "group.dev.netlob.widget-for-spotify")?.string(forKey: "accessToken") ?? ""), forHTTPHeaderField: "Authorization")
-        
-        URLSession.shared.dataTaskPublisher(for: request)
-            .map{$0.data}
-            .decode(type: CurrentlyPlayingContext.self, decoder: JSONDecoder())
-            .eraseToAnyPublisher()
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
- 
-        }) { response in
-            completion(response)
+        .supportedFamilies([.systemSmall, .systemMedium])
+        .onBackgroundURLSessionEvents(matching: "CurrentlyPlaying"){ (string, session) in
+            debugPrint(string)
+            debugPrint(session)
         }
-        .store(in: &cancellable)
     }
 }
-
-@main
-struct SpotifyWidgetBundle: WidgetBundle {
-    @WidgetBundleBuilder
-    var body: some Widget {
-        //AddYourWidgetHere()
-        CurrentPlayingWidget()
-    }
-}
-
-//func getCurrentlyPlayingContextCompletion(completion: @escaping (CurrentlyPlayingContext?) -> ()){
-//    let url = "https://api.spotify.com/v1/me/player"
-//
-//    let urlSession: URLSession = {
-//        let config = URLSessionConfiguration.background(withIdentifier: "CurrentlyPlayingContext")
-//        config.isDiscretionary = true
-//        config.sessionSendsLaunchEvents = true
-//        return URLSession(configuration: config)
-//    }()
-//    debugPrint(UserDefaults(suiteName: "group.dev.netlob.widget-for-spotify")?.string(forKey: "accessToken"))
-//
-//    var request = URLRequest(url: URL(string: url)!)
-//    request.setValue("Bearer " + (UserDefaults(suiteName: "group.dev.netlob.widget-for-spotify")?.string(forKey: "accessToken") ?? ""), forHTTPHeaderField: "Authorization")
-//
-//    urlSession.dataTask(with: request) { (data, _, err) in
-//        if err != nil {
-//            print(err?.localizedDescription)
-//        }
-//
-//        do{
-//            let jsonData = try JSONDecoder().decode(CurrentlyPlayingContext.self, from: data!)
-//            debugPrint(data)
-//
-//            completion(jsonData)
-//        }
-//        catch{
-//            debugPrint(error.localizedDescription)
-//        }
-//    }.resume()
-//}

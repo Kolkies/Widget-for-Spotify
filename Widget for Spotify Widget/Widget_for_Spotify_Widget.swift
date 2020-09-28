@@ -94,7 +94,7 @@ struct CurrentPlayingWidgetEntryView : SwiftUI.View {
                                     .resizable()
                                     .scaledToFit()
                                     .cornerRadius(10)
-                                    .shadow(color: .black, radius: 2, x: 2, y: 2)
+                                    .shadow(color: .black, radius: 2)
                         } else {
                             Image(data.widgetData.device.name == "Nothing Playing" ? "SpotifyIconGreen" : "PreviewArtAsset")
                                 .resizable()

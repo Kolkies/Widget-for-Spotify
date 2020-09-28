@@ -25,14 +25,14 @@ struct MainView: View {
                                 Text("Restart widget")
                             }
                             Spacer()
+                            Button(action: {
+                                UIPasteboard.general.string = SpotifyTokenHandler.accessToken() ?? ""
+                            }){
+                                Text("Copy accessToken to clipboard")
+                            }
                         }
                         .navigationBarTitle("Home")
                         Spacer()
-                        Button(action: {
-                            UIPasteboard.general.string = SpotifyTokenHandler.accessToken() ?? ""
-                        }){
-                            Text("Copy accessToken to clipboard")
-                        }
                     }
                     .padding(.horizontal, 15)
                 }
@@ -42,29 +42,29 @@ struct MainView: View {
                 Text("Home")
             }
             
-            NavigationView{
-                ScrollView(.vertical){
-                    HStack {
-                        VStack(alignment: .leading) {
-//                            Text("Welcome " + (spotifyData.personInfo?.display_name ?? "{{ user }}"))
-                            CardView(card: Card(prompt: "Change background of the widget"))
-                            CardView(card: Card(prompt: "Change background of the widget"))
-                            CardView(card: Card(prompt: "Change background of the widget"))
-                            CardView(card: Card(prompt: "Change background of the widget"))
-                            CardView(card: Card(prompt: "Change background of the widget"))
-                            Spacer()
-                        }
-                        .navigationBarTitle("Tutorials")
-                        Spacer()
-                    }
-                    .padding(.horizontal, 15)
-                }
-            }
-            .tabItem {
-                Image(systemName: "text.book.closed")
-                Text("Tutorials")
-            }
-            
+//            NavigationView{
+//                ScrollView(.vertical){
+//                    HStack {
+//                        VStack(alignment: .leading) {
+////                            Text("Welcome " + (spotifyData.personInfo?.display_name ?? "{{ user }}"))
+//                            CardView(card: Card(prompt: "Change background of the widget"))
+//                            CardView(card: Card(prompt: "Change background of the widget"))
+//                            CardView(card: Card(prompt: "Change background of the widget"))
+//                            CardView(card: Card(prompt: "Change background of the widget"))
+//                            CardView(card: Card(prompt: "Change background of the widget"))
+//                            Spacer()
+//                        }
+//                        .navigationBarTitle("Tutorials")
+//                        Spacer()
+//                    }
+//                    .padding(.horizontal, 15)
+//                }
+//            }
+//            .tabItem {
+//                Image(systemName: "text.book.closed")
+//                Text("Tutorials")
+//            }
+//
             NavigationView{
                 Text("Settings")
                     .navigationBarTitle("Settings Page")

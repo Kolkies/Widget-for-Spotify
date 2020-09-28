@@ -67,6 +67,9 @@
 		F4AD5F9C2521E42900D62163 /* WidgetIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F4AD5F952521E42900D62163 /* WidgetIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F4AD5FA22521E43F00D62163 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FA12521E43F00D62163 /* Intents.intentdefinition */; };
 		F4AD5FA52521E47000D62163 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FA12521E43F00D62163 /* Intents.intentdefinition */; };
+		F4AD5FB12522370600D62163 /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FB02522370600D62163 /* SettingsPage.swift */; };
+		F4AD5FB42522371600D62163 /* AboutPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FB32522371600D62163 /* AboutPage.swift */; };
+		F4AD5FB7252238C800D62163 /* AddingAWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FB6252238C800D62163 /* AddingAWidget.swift */; };
 		F4B96EB52520D114002A1F6F /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96EB42520D114002A1F6F /* NetworkClient.swift */; };
 		F4B96EB82520D13C002A1F6F /* StatusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96EB72520D13C002A1F6F /* StatusService.swift */; };
 		F4B96EBF2520E122002A1F6F /* SimpleMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96EBE2520E122002A1F6F /* SimpleMusicView.swift */; };
@@ -170,6 +173,9 @@
 		F4AD5F992521E42900D62163 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4AD5FA12521E43F00D62163 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		F4AD5FAB2521E65300D62163 /* WidgetIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetIntents.entitlements; sourceTree = "<group>"; };
+		F4AD5FB02522370600D62163 /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
+		F4AD5FB32522371600D62163 /* AboutPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPage.swift; sourceTree = "<group>"; };
+		F4AD5FB6252238C800D62163 /* AddingAWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingAWidget.swift; sourceTree = "<group>"; };
 		F4B3B5D8251BF5E300570A97 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F4B3B5DA251BF5E300570A97 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F4B96EB42520D114002A1F6F /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
@@ -240,6 +246,7 @@
 		1E8D1FF5251BDB2B00343593 /* Widget for Spotify */ = {
 			isa = PBXGroup;
 			children = (
+				F4AD5FAF252236F400D62163 /* SettingsPage */,
 				F4B96EBD2520E0EB002A1F6F /* Views */,
 				F48E71E2251F756B0012780C /* SpotifyDataStructs */,
 				F472C1BF251C8DA1000E7318 /* Widget for Spotify.entitlements */,
@@ -317,6 +324,16 @@
 				F4AD5FA12521E43F00D62163 /* Intents.intentdefinition */,
 			);
 			path = WidgetIntents;
+			sourceTree = "<group>";
+		};
+		F4AD5FAF252236F400D62163 /* SettingsPage */ = {
+			isa = PBXGroup;
+			children = (
+				F4AD5FB02522370600D62163 /* SettingsPage.swift */,
+				F4AD5FB32522371600D62163 /* AboutPage.swift */,
+				F4AD5FB6252238C800D62163 /* AddingAWidget.swift */,
+			);
+			path = SettingsPage;
 			sourceTree = "<group>";
 		};
 		F4B3B5D7251BF5E300570A97 /* Frameworks */ = {
@@ -524,6 +541,7 @@
 				F48E71FC251F8BBD0012780C /* SimplifiedArtist.swift in Sources */,
 				F48E71F0251F86740012780C /* Device.swift in Sources */,
 				F48E71EA251F76440012780C /* Followers.swift in Sources */,
+				F4AD5FB12522370600D62163 /* SettingsPage.swift in Sources */,
 				F48E7208251F93DE0012780C /* ResumePoint.swift in Sources */,
 				F48E722F251F959E0012780C /* Widget_for_Spotify_Widget.intentdefinition in Sources */,
 				F48E71E4251F75800012780C /* ImageObject.swift in Sources */,
@@ -534,6 +552,7 @@
 				1E8D1FF7251BDB2B00343593 /* AppDelegate.swift in Sources */,
 				F48E71FF251F8C560012780C /* FullEpisode.swift in Sources */,
 				F48E71F9251F892E0012780C /* SimplifiedAlbum.swift in Sources */,
+				F4AD5FB42522371600D62163 /* AboutPage.swift in Sources */,
 				F48E71F6251F872B0012780C /* FullTrack.swift in Sources */,
 				F48E71ED251F858C0012780C /* CurrentlyPlayingContext.swift in Sources */,
 				F48E71D8251F44550012780C /* SpotifyData.swift in Sources */,
@@ -541,6 +560,7 @@
 				F472C1D1251E32C6000E7318 /* SpotifyTokenHandler.swift in Sources */,
 				F48E71E7251F75F20012780C /* PersonInfo.swift in Sources */,
 				1E8D1FF9251BDB2B00343593 /* SceneDelegate.swift in Sources */,
+				F4AD5FB7252238C800D62163 /* AddingAWidget.swift in Sources */,
 				F472C1CE251DE51C000E7318 /* URL.extension.swift in Sources */,
 				1E8D1FFB251BDB2B00343593 /* ContentView.swift in Sources */,
 				F4AD5FA52521E47000D62163 /* Intents.intentdefinition in Sources */,

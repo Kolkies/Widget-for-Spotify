@@ -66,7 +66,7 @@ struct MainView: View {
             }
             
             NavigationView{
-                Text("Settings")
+                SettingsPage()
                     .navigationBarTitle("Settings Page")
             }
             .tabItem {

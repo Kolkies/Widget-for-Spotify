@@ -12,6 +12,10 @@ import WidgetKit
 struct MainView: View {
     @ObservedObject var spotifyData = SpotifyData.shared
     
+    @State var backgroundColor: Color = Color.white
+    @State var textColor: Color = Color.black
+    @State var currentPreviewFamily: WidgetSizes = WidgetSizes.smallCurrent
+    
     var body: some View {
         TabView{
             NavigationView{
@@ -19,16 +23,37 @@ struct MainView: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text("Welcome " + (spotifyData.personInfo?.display_name ?? "{{ user }}"))
-                            Button(action: {
-                                WidgetCenter.shared.reloadAllTimelines()
-                            }){
-                                Text("Restart widget")
+                                .font(.headline)
+                            Text("Customize Widget: ")
+                                .font(.subheadline)
+                            Divider()
+                            Picker(selection: $currentPreviewFamily, label: Text("Widget Size")) {
+                                ForEach(WidgetSizes.allCases, id: \.self) {
+                                    Text($0.rawValue)
+                                }
                             }
-                            Spacer()
-                            Button(action: {
-                                UIPasteboard.general.string = SpotifyTokenHandler.accessToken() ?? ""
-                            }){
-                                Text("Copy accessToken to clipboard")
+                            .pickerStyle(SegmentedPickerStyle())
+                            if(currentPreviewFamily == WidgetSizes.smallCurrent){
+                                ZStack(alignment: .leading){
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .fill(backgroundColor)
+                                        .aspectRatio(1.0, contentMode: .fit)
+                                    SmallCurrent(data: getExampleModel(), isInApp: true)
+                                        .foregroundColor(textColor)
+                                }
+                                
+                                
+                            } else if(currentPreviewFamily == WidgetSizes.mediumCurrent){
+                                MediumCurrent(data: getExampleModel(), isInApp: true)
+                            }
+                            Divider()
+                            ScrollView{
+                                VStack{
+                                    Text("Widget Config: ")
+                                        .font(.headline)
+                                    ColorPicker("Text Color", selection: $textColor, supportsOpacity: false)
+                                    ColorPicker("Background Color", selection: $backgroundColor, supportsOpacity: false)
+                                }
                             }
                         }
                         .navigationBarTitle("Home")
@@ -42,29 +67,6 @@ struct MainView: View {
                 Text("Home")
             }
             
-//            NavigationView{
-//                ScrollView(.vertical){
-//                    HStack {
-//                        VStack(alignment: .leading) {
-////                            Text("Welcome " + (spotifyData.personInfo?.display_name ?? "{{ user }}"))
-//                            CardView(card: Card(prompt: "Change background of the widget"))
-//                            CardView(card: Card(prompt: "Change background of the widget"))
-//                            CardView(card: Card(prompt: "Change background of the widget"))
-//                            CardView(card: Card(prompt: "Change background of the widget"))
-//                            CardView(card: Card(prompt: "Change background of the widget"))
-//                            Spacer()
-//                        }
-//                        .navigationBarTitle("Tutorials")
-//                        Spacer()
-//                    }
-//                    .padding(.horizontal, 15)
-//                }
-//            }
-//            .tabItem {
-//                Image(systemName: "text.book.closed")
-//                Text("Tutorials")
-//            }
-//
             NavigationView{
                 SettingsPage()
                     .navigationBarTitle("Settings Page")

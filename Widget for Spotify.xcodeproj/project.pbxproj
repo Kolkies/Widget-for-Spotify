@@ -70,6 +70,15 @@
 		F4AD5FB12522370600D62163 /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FB02522370600D62163 /* SettingsPage.swift */; };
 		F4AD5FB42522371600D62163 /* AboutPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FB32522371600D62163 /* AboutPage.swift */; };
 		F4AD5FB7252238C800D62163 /* AddingAWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FB6252238C800D62163 /* AddingAWidget.swift */; };
+		F4AD5FBD25223C5200D62163 /* WidgetSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FBC25223C5200D62163 /* WidgetSizes.swift */; };
+		F4AD5FC125223C8200D62163 /* SmallCurrent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FC025223C8200D62163 /* SmallCurrent.swift */; };
+		F4AD5FC225223C8200D62163 /* SmallCurrent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FC025223C8200D62163 /* SmallCurrent.swift */; };
+		F4AD5FC425223CA800D62163 /* Widget_for_Spotify_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E7237251F95D00012780C /* Widget_for_Spotify_Widget.swift */; };
+		F4AD5FC625223DF000D62163 /* WidgetSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FBC25223C5200D62163 /* WidgetSizes.swift */; };
+		F4AD5FC925223EB600D62163 /* MediumCurrent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FC825223EB600D62163 /* MediumCurrent.swift */; };
+		F4AD5FCA25223EB600D62163 /* MediumCurrent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FC825223EB600D62163 /* MediumCurrent.swift */; };
+		F4AD5FCC25223F9100D62163 /* StatusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96EB72520D13C002A1F6F /* StatusService.swift */; };
+		F4AD5FCE25223F9400D62163 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96EB42520D114002A1F6F /* NetworkClient.swift */; };
 		F4B96EB52520D114002A1F6F /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96EB42520D114002A1F6F /* NetworkClient.swift */; };
 		F4B96EB82520D13C002A1F6F /* StatusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96EB72520D13C002A1F6F /* StatusService.swift */; };
 		F4B96EBF2520E122002A1F6F /* SimpleMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96EBE2520E122002A1F6F /* SimpleMusicView.swift */; };
@@ -176,6 +185,9 @@
 		F4AD5FB02522370600D62163 /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 		F4AD5FB32522371600D62163 /* AboutPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPage.swift; sourceTree = "<group>"; };
 		F4AD5FB6252238C800D62163 /* AddingAWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingAWidget.swift; sourceTree = "<group>"; };
+		F4AD5FBC25223C5200D62163 /* WidgetSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSizes.swift; sourceTree = "<group>"; };
+		F4AD5FC025223C8200D62163 /* SmallCurrent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCurrent.swift; sourceTree = "<group>"; };
+		F4AD5FC825223EB600D62163 /* MediumCurrent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumCurrent.swift; sourceTree = "<group>"; };
 		F4B3B5D8251BF5E300570A97 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F4B3B5DA251BF5E300570A97 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F4B96EB42520D114002A1F6F /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
@@ -246,6 +258,7 @@
 		1E8D1FF5251BDB2B00343593 /* Widget for Spotify */ = {
 			isa = PBXGroup;
 			children = (
+				F4AD5FBB25223C3A00D62163 /* WidgetViews */,
 				F4AD5FAF252236F400D62163 /* SettingsPage */,
 				F4B96EBD2520E0EB002A1F6F /* Views */,
 				F48E71E2251F756B0012780C /* SpotifyDataStructs */,
@@ -334,6 +347,16 @@
 				F4AD5FB6252238C800D62163 /* AddingAWidget.swift */,
 			);
 			path = SettingsPage;
+			sourceTree = "<group>";
+		};
+		F4AD5FBB25223C3A00D62163 /* WidgetViews */ = {
+			isa = PBXGroup;
+			children = (
+				F4AD5FBC25223C5200D62163 /* WidgetSizes.swift */,
+				F4AD5FC025223C8200D62163 /* SmallCurrent.swift */,
+				F4AD5FC825223EB600D62163 /* MediumCurrent.swift */,
+			);
+			path = WidgetViews;
 			sourceTree = "<group>";
 		};
 		F4B3B5D7251BF5E300570A97 /* Frameworks */ = {
@@ -539,25 +562,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				F48E71FC251F8BBD0012780C /* SimplifiedArtist.swift in Sources */,
+				F4AD5FCC25223F9100D62163 /* StatusService.swift in Sources */,
 				F48E71F0251F86740012780C /* Device.swift in Sources */,
 				F48E71EA251F76440012780C /* Followers.swift in Sources */,
 				F4AD5FB12522370600D62163 /* SettingsPage.swift in Sources */,
 				F48E7208251F93DE0012780C /* ResumePoint.swift in Sources */,
 				F48E722F251F959E0012780C /* Widget_for_Spotify_Widget.intentdefinition in Sources */,
+				F4AD5FC425223CA800D62163 /* Widget_for_Spotify_Widget.swift in Sources */,
 				F48E71E4251F75800012780C /* ImageObject.swift in Sources */,
 				F48E71F3251F86BB0012780C /* SpotifyContext.swift in Sources */,
 				F48E71E0251F5E6B0012780C /* MainView.swift in Sources */,
 				F48E7205251F8DE00012780C /* Copyright.swift in Sources */,
 				F48E7202251F8D260012780C /* SimplifiedShow.swift in Sources */,
 				1E8D1FF7251BDB2B00343593 /* AppDelegate.swift in Sources */,
+				F4AD5FBD25223C5200D62163 /* WidgetSizes.swift in Sources */,
 				F48E71FF251F8C560012780C /* FullEpisode.swift in Sources */,
 				F48E71F9251F892E0012780C /* SimplifiedAlbum.swift in Sources */,
 				F4AD5FB42522371600D62163 /* AboutPage.swift in Sources */,
 				F48E71F6251F872B0012780C /* FullTrack.swift in Sources */,
 				F48E71ED251F858C0012780C /* CurrentlyPlayingContext.swift in Sources */,
 				F48E71D8251F44550012780C /* SpotifyData.swift in Sources */,
+				F4AD5FC925223EB600D62163 /* MediumCurrent.swift in Sources */,
 				F4B96EBF2520E122002A1F6F /* SimpleMusicView.swift in Sources */,
+				F4AD5FCE25223F9400D62163 /* NetworkClient.swift in Sources */,
 				F472C1D1251E32C6000E7318 /* SpotifyTokenHandler.swift in Sources */,
+				F4AD5FC125223C8200D62163 /* SmallCurrent.swift in Sources */,
 				F48E71E7251F75F20012780C /* PersonInfo.swift in Sources */,
 				1E8D1FF9251BDB2B00343593 /* SceneDelegate.swift in Sources */,
 				F4AD5FB7252238C800D62163 /* AddingAWidget.swift in Sources */,
@@ -576,6 +605,7 @@
 				F462CA93251FA894001FCF7B /* FullEpisode.swift in Sources */,
 				F4B96EB82520D13C002A1F6F /* StatusService.swift in Sources */,
 				F462CA98251FA894001FCF7B /* ResumePoint.swift in Sources */,
+				F4AD5FCA25223EB600D62163 /* MediumCurrent.swift in Sources */,
 				F45C602125210997005088B4 /* WidgetBundle.swift in Sources */,
 				F462CA99251FA894001FCF7B /* FullTrack.swift in Sources */,
 				F4B96EC12520E124002A1F6F /* SimpleMusicView.swift in Sources */,
@@ -584,6 +614,7 @@
 				F48E7238251F95D00012780C /* Widget_for_Spotify_Widget.swift in Sources */,
 				F462CAA1251FA8D8001FCF7B /* SpotifyTokenHandler.swift in Sources */,
 				F462CA9A251FA894001FCF7B /* Copyright.swift in Sources */,
+				F4AD5FC225223C8200D62163 /* SmallCurrent.swift in Sources */,
 				F462CA9B251FA894001FCF7B /* ImageObject.swift in Sources */,
 				F462CA94251FA894001FCF7B /* Followers.swift in Sources */,
 				F462CA9D251FA894001FCF7B /* SimplifiedShow.swift in Sources */,
@@ -592,6 +623,7 @@
 				F462CA95251FA894001FCF7B /* PersonInfo.swift in Sources */,
 				F462CA96251FA894001FCF7B /* Device.swift in Sources */,
 				F48E722E251F959E0012780C /* Widget_for_Spotify_Widget.intentdefinition in Sources */,
+				F4AD5FC625223DF000D62163 /* WidgetSizes.swift in Sources */,
 				F462CA9E251FA894001FCF7B /* SimplifiedAlbum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

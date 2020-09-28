@@ -10,7 +10,15 @@ import SwiftUI
 
 struct AboutPage: View {
     var body: some View {
-        Text("About")
+        VStack {
+            Text("About")
+            Text("Debug: ")
+            Button(action: {
+                UIPasteboard.general.string = SpotifyTokenHandler.accessToken() ?? ""
+            }){
+                Text("Copy accessToken to clipboard")
+            }
+        }
     }
 }
 

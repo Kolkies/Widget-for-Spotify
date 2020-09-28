@@ -12,10 +12,11 @@ struct SettingsPage: View {
     var body: some View {
         Form {
             Section {
-                NavigationLink(destination: AddingAWidget())
-                HStack{
-                    Image(systemName: "info.circle")
-                    Text("About")
+                NavigationLink(destination: AddingAWidget()){
+                    HStack{
+                        Image(systemName: "text.book.closed")
+                        Text("Adding the widget")
+                    }
                 }
                 NavigationLink(destination: AboutPage()){
                     HStack{

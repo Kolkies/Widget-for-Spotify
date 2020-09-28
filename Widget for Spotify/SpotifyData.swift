@@ -31,7 +31,7 @@ class SpotifyData: ObservableObject {
     /// Sets the personInfo property
     func getPersonInfo() -> Void {
         let headers: HTTPHeaders = [
-//            "Authorization": "Bearer \(SpotifyTokenHandler.accessToken() ?? "")"
+            "Authorization": "Bearer \(SpotifyTokenHandler.accessToken() ?? "")"
         ]
         
         WidgetCenter.shared.reloadAllTimelines()

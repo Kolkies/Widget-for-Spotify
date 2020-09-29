@@ -39,6 +39,13 @@ struct AboutPage: View {
                         Link("Spotify AB", destination: URL(string: "https://spotify.com")!)
                         Spacer()
                     }
+                    NavigationLink(destination: ThirdParty().navigationBarTitle("Third Party")){
+                        HStack{
+                            Image(systemName: "info.circle")
+                            Text("Third party Software")
+                            Spacer()
+                        }
+                    }
                     Divider()
                         .padding(.vertical, 20)
                     Text("We claim no rights to any work shown using this app. This is just a medium for users to quickly see what they are listenening. All rights belong to the original authors.")

@@ -12,9 +12,18 @@ import WidgetKit
 struct MainView: View {
     @ObservedObject var spotifyData = SpotifyData.shared
     
+    @State private var showingAlert = false
+    
     @State var backgroundColor: Color = Color.white
     @State var textColor: Color = Color.black
     @State var currentPreviewFamily: WidgetSizes = WidgetSizes.mediumCurrent
+    
+    init(){
+        if(UserDefaults.init().bool(forKey: "hasLaunchedBefore")){
+            showingAlert = true
+            UserDefaults.init().setValue(false, forKey: "hasLaunchedBefore")
+        }
+    }
     
     var body: some View {
         TabView{
@@ -24,25 +33,25 @@ struct MainView: View {
                         VStack(alignment: .leading) {
                             Text("Welcome " + (spotifyData.personInfo?.display_name ?? "User"))
                                 .font(.headline)
-                            Text("Available Widgets: ")
-                                .font(.subheadline)
+//                            Text("Available Widgets: ")
+//                                .font(.subheadline)
                             Divider()
-                            Picker(selection: $currentPreviewFamily, label: Text("Widget Size")) {
-                                ForEach(WidgetSizes.allCases, id: \.self) {
-                                    Text($0.rawValue == "smallCurrent" ? "Small" : "Medium")
-                                }
-                            }
-                            .pickerStyle(SegmentedPickerStyle())
+//                            Picker(selection: $currentPreviewFamily, label: Text("Widget Size")) {
+//                                ForEach(WidgetSizes.allCases, id: \.self) {
+//                                    Text($0.rawValue == "smallCurrent" ? "Small" : "Medium")
+//                                }
+//                            }
+//                            .pickerStyle(SegmentedPickerStyle())
                             ZStack{
-                                if(currentPreviewFamily == WidgetSizes.smallCurrent){
-                                    ZStack(alignment: .leading){
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .aspectRatio(1.0, contentMode: .fit)
-                                        SmallCurrent(data: getExampleModel(context: spotifyData.currentlyPlayingContext), isInApp: true)
-                                    }
-                                } else if(currentPreviewFamily == WidgetSizes.mediumCurrent){
+//                                if(currentPreviewFamily == WidgetSizes.smallCurrent){
+//                                    ZStack(alignment: .leading){
+//                                        RoundedRectangle(cornerRadius: 20)
+//                                            .aspectRatio(1.0, contentMode: .fit)
+//                                        SmallCurrent(data: getExampleModel(context: spotifyData.currentlyPlayingContext), isInApp: true)
+//                                    }
+//                                } else if(currentPreviewFamily == WidgetSizes.mediumCurrent){
                                     MediumCurrent(data: getExampleModel(context: spotifyData.currentlyPlayingContext), isInApp: true)
-                                }
+//                                }
                             }
                             .frame(maxHeight: 160)
                             Divider()
@@ -59,6 +68,16 @@ struct MainView: View {
                             Banner()
                         }
                         .navigationBarTitle("Home")
+                        .navigationBarItems(trailing:
+                            Button(action: {
+                                showingAlert = true
+                            }) {
+                                Image(systemName: "info.circle").imageScale(.large)
+                            }
+                            .alert(isPresented: $showingAlert){
+                                Alert(title: Text("Unable to refresh continuously"), message: Text("Due to limitations from iOS, the widget may not update live and you’ll have to click on the widget to refresh :)"), dismissButton: .default(Text("Got it!")))
+                            }
+                        )
                         Spacer()
                     }.padding(.leading, 5)
                 }

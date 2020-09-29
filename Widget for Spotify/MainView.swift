@@ -37,10 +37,8 @@ struct MainView: View {
                                 if(currentPreviewFamily == WidgetSizes.smallCurrent){
                                     ZStack(alignment: .leading){
                                         RoundedRectangle(cornerRadius: 20)
-                                            .fill(backgroundColor)
                                             .aspectRatio(1.0, contentMode: .fit)
                                         SmallCurrent(data: getExampleModel(context: spotifyData.currentlyPlayingContext), isInApp: true)
-                                            .foregroundColor(textColor)
                                     }
                                 } else if(currentPreviewFamily == WidgetSizes.mediumCurrent){
                                     MediumCurrent(data: getExampleModel(context: spotifyData.currentlyPlayingContext), isInApp: true)

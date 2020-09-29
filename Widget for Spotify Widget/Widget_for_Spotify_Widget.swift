@@ -49,25 +49,25 @@ struct Provider: IntentTimelineProvider {
             completion(timeline)
         }else{
             StatusService.getStatus(client: NetworkClient()){ updates in
-                if((updates?.is_playing) == true){
+                var playlistName: String? = nil
+                if(updates?.item?.album.album_type != "single"){
+                    playlistName = updates?.item?.name
+                }else{
+                    updates?.item?.artists.forEach{ artist in
+                        if(playlistName == nil){
+                            playlistName = ""
+                            playlistName?.append(artist.name)
+                        }
+                        else {
+                            playlistName?.append(", ")
+                            playlistName?.append(artist.name)
+                        }
+                    }
+                }
+                if((updates?.item?.album.images[1]) != nil){
                     KingfisherManager.shared.retrieveImage(with: URL(string: (updates?.item?.album.images[1].url)!)!){ result in
                         switch result{
                         case .success(let value):
-                            var playlistName: String? = nil
-                            if(updates?.item?.album.album_type != "single"){
-                                playlistName = updates?.item?.name
-                            }else{
-                                updates?.item?.artists.forEach{ artist in
-                                    if(playlistName == nil){
-                                        playlistName = ""
-                                        playlistName?.append(artist.name)
-                                    }
-                                    else {
-                                        playlistName?.append(", ")
-                                        playlistName?.append(artist.name)
-                                    }
-                                }
-                            }
                             
                             let nextUpdate = Calendar.current.date(byAdding: .second, value: Int(truncating: configuration.refreshTime ?? 30), to: Date())
 
@@ -87,7 +87,7 @@ struct Provider: IntentTimelineProvider {
                     
                     let nextUpdate = Calendar.current.date(byAdding: .second, value: Int(truncating: (configuration.refreshTime ?? 30)), to: Date())
 
-                    let data = Model(date: nextUpdate!, widgetData: updates!, configuration: configuration, albumImage: nil, playlistName: nil)
+                    let data = Model(date: nextUpdate!, widgetData: updates!, configuration: configuration, albumImage: nil, playlistName: playlistName)
 
                     let timeline = Timeline(entries: [data], policy: .after(nextUpdate!))
 

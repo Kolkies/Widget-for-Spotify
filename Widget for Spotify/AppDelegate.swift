@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTSessionManagerDelegate
         
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
+        WidgetCenter.shared.reloadAllTimelines()
+        
         // Override point for customization after application launch.
         let item = launchOptions?[.shortcutItem]
         if let shortcut = item as? UIApplicationShortcutItem {
@@ -80,6 +82,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTSessionManagerDelegate
         }
         print("Refresh Token: \(session.refreshToken)")
         SpotifyTokenHandler.storeTokens(accessToken: session.accessToken, refreshToken: session.refreshToken)
+        DispatchQueue.main.async {
+            SpotifyTokenHandler.shared.authState = .SIGNEDIN
+        }
         SpotifyTokenHandler.refreshToken()
     }
     

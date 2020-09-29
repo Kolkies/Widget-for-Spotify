@@ -31,6 +31,14 @@ class SpotifyTokenHandler: ObservableObject {
         userDefaults?.setValue(refreshToken, forKey: "refreshToken")
     }
     
+    static func logOut(){
+        print("Signing out user")
+        let userDefaults = UserDefaults.init(suiteName: "group.dev.netlob.widget-for-spotify")
+        userDefaults?.setValue(nil, forKey: "accessToken")
+        userDefaults?.setValue(nil, forKey: "refreshToken")
+        SpotifyTokenHandler.shared.authState = .NOTSIGNEDID
+    }
+    
     /**
      Returns the stored accessToken from database
             
@@ -56,6 +64,7 @@ class SpotifyTokenHandler: ObservableObject {
             SpotifyTokenHandler.shared.authState = .NOTSIGNEDID
             return
         }
+        SpotifyTokenHandler.shared.authState = .SIGNEDIN
         
         AF.request("https://spotifywidgettokenservice.herokuapp.com/api/refresh_token", method: .post, parameters: ["refresh_token": refreshToken]).responseJSON { response in
             if response.data != nil {

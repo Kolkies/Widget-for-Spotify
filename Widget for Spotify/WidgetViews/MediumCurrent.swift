@@ -74,6 +74,6 @@ struct MediumCurrent: View {
 
 struct MediumCurrent_Previews: PreviewProvider {
     static var previews: some View {
-        MediumCurrent(data: getExampleModel())
+        MediumCurrent(data: getExampleModel(context: nil))
     }
 }

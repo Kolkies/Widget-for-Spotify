@@ -79,6 +79,15 @@
 		F4AD5FCA25223EB600D62163 /* MediumCurrent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FC825223EB600D62163 /* MediumCurrent.swift */; };
 		F4AD5FCC25223F9100D62163 /* StatusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96EB72520D13C002A1F6F /* StatusService.swift */; };
 		F4AD5FCE25223F9400D62163 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96EB42520D114002A1F6F /* NetworkClient.swift */; };
+		F4AD5FD625227F1100D62163 /* UserMessagingPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4AD5FD025227F0200D62163 /* UserMessagingPlatform.framework */; };
+		F4AD5FD725227F1100D62163 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4AD5FD125227F0300D62163 /* PromisesObjC.xcframework */; };
+		F4AD5FD825227F1100D62163 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4AD5FD225227F0300D62163 /* GoogleUtilities.xcframework */; };
+		F4AD5FD925227F1100D62163 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4AD5FD325227F0700D62163 /* GoogleAppMeasurement.framework */; };
+		F4AD5FDA25227F1100D62163 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4AD5FD425227F1100D62163 /* GoogleMobileAds.framework */; };
+		F4AD5FDB25227F1100D62163 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4AD5FD525227F1100D62163 /* nanopb.xcframework */; };
+		F4AD5FDE252280B100D62163 /* GMobBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FDD252280B100D62163 /* GMobBanner.swift */; };
+		F4AD5FE12522867F00D62163 /* SpotifySignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FE02522867F00D62163 /* SpotifySignIn.swift */; };
+		F4AD5FE22522867F00D62163 /* SpotifySignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FE02522867F00D62163 /* SpotifySignIn.swift */; };
 		F4B96EB52520D114002A1F6F /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96EB42520D114002A1F6F /* NetworkClient.swift */; };
 		F4B96EB82520D13C002A1F6F /* StatusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96EB72520D13C002A1F6F /* StatusService.swift */; };
 		F4B96EBF2520E122002A1F6F /* SimpleMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B96EBE2520E122002A1F6F /* SimpleMusicView.swift */; };
@@ -188,6 +197,14 @@
 		F4AD5FBC25223C5200D62163 /* WidgetSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSizes.swift; sourceTree = "<group>"; };
 		F4AD5FC025223C8200D62163 /* SmallCurrent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCurrent.swift; sourceTree = "<group>"; };
 		F4AD5FC825223EB600D62163 /* MediumCurrent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumCurrent.swift; sourceTree = "<group>"; };
+		F4AD5FD025227F0200D62163 /* UserMessagingPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UserMessagingPlatform.framework; sourceTree = "<group>"; };
+		F4AD5FD125227F0300D62163 /* PromisesObjC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = PromisesObjC.xcframework; sourceTree = "<group>"; };
+		F4AD5FD225227F0300D62163 /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleUtilities.xcframework; sourceTree = "<group>"; };
+		F4AD5FD325227F0700D62163 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppMeasurement.framework; sourceTree = "<group>"; };
+		F4AD5FD425227F1100D62163 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		F4AD5FD525227F1100D62163 /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = nanopb.xcframework; sourceTree = "<group>"; };
+		F4AD5FDD252280B100D62163 /* GMobBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMobBanner.swift; sourceTree = "<group>"; };
+		F4AD5FE02522867F00D62163 /* SpotifySignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifySignIn.swift; sourceTree = "<group>"; };
 		F4B3B5D8251BF5E300570A97 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F4B3B5DA251BF5E300570A97 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F4B96EB42520D114002A1F6F /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
@@ -201,7 +218,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4B96EC92520E72A002A1F6F /* KingfisherSwiftUI in Frameworks */,
+				F4AD5FD625227F1100D62163 /* UserMessagingPlatform.framework in Frameworks */,
+				F4AD5FDA25227F1100D62163 /* GoogleMobileAds.framework in Frameworks */,
+				F4AD5FD925227F1100D62163 /* GoogleAppMeasurement.framework in Frameworks */,
+				F4AD5FDB25227F1100D62163 /* nanopb.xcframework in Frameworks */,
 				F48E71D6251F41DA0012780C /* SwiftyJSON in Frameworks */,
+				F4AD5FD825227F1100D62163 /* GoogleUtilities.xcframework in Frameworks */,
+				F4AD5FD725227F1100D62163 /* PromisesObjC.xcframework in Frameworks */,
 				F472C1DD251E795F000E7318 /* Alamofire in Frameworks */,
 				F462CAAD251FC69D001FCF7B /* URLImage in Frameworks */,
 				F472C1BC251C6A50000E7318 /* SpotifyiOS.framework in Frameworks */,
@@ -362,6 +385,12 @@
 		F4B3B5D7251BF5E300570A97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4AD5FD325227F0700D62163 /* GoogleAppMeasurement.framework */,
+				F4AD5FD425227F1100D62163 /* GoogleMobileAds.framework */,
+				F4AD5FD225227F0300D62163 /* GoogleUtilities.xcframework */,
+				F4AD5FD525227F1100D62163 /* nanopb.xcframework */,
+				F4AD5FD125227F0300D62163 /* PromisesObjC.xcframework */,
+				F4AD5FD025227F0200D62163 /* UserMessagingPlatform.framework */,
 				F472C1B3251C695E000E7318 /* SpotifyiOS.framework */,
 				F4B3B5D8251BF5E300570A97 /* WidgetKit.framework */,
 				F4B3B5DA251BF5E300570A97 /* SwiftUI.framework */,
@@ -373,6 +402,8 @@
 			isa = PBXGroup;
 			children = (
 				F4B96EBE2520E122002A1F6F /* SimpleMusicView.swift */,
+				F4AD5FDD252280B100D62163 /* GMobBanner.swift */,
+				F4AD5FE02522867F00D62163 /* SpotifySignIn.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -575,6 +606,7 @@
 				F48E7205251F8DE00012780C /* Copyright.swift in Sources */,
 				F48E7202251F8D260012780C /* SimplifiedShow.swift in Sources */,
 				1E8D1FF7251BDB2B00343593 /* AppDelegate.swift in Sources */,
+				F4AD5FE12522867F00D62163 /* SpotifySignIn.swift in Sources */,
 				F4AD5FBD25223C5200D62163 /* WidgetSizes.swift in Sources */,
 				F48E71FF251F8C560012780C /* FullEpisode.swift in Sources */,
 				F48E71F9251F892E0012780C /* SimplifiedAlbum.swift in Sources */,
@@ -591,6 +623,7 @@
 				1E8D1FF9251BDB2B00343593 /* SceneDelegate.swift in Sources */,
 				F4AD5FB7252238C800D62163 /* AddingAWidget.swift in Sources */,
 				F472C1CE251DE51C000E7318 /* URL.extension.swift in Sources */,
+				F4AD5FDE252280B100D62163 /* GMobBanner.swift in Sources */,
 				1E8D1FFB251BDB2B00343593 /* ContentView.swift in Sources */,
 				F4AD5FA52521E47000D62163 /* Intents.intentdefinition in Sources */,
 			);
@@ -620,6 +653,7 @@
 				F462CA9D251FA894001FCF7B /* SimplifiedShow.swift in Sources */,
 				F462CA9C251FA894001FCF7B /* SimplifiedArtist.swift in Sources */,
 				F462CA92251FA894001FCF7B /* SpotifyContext.swift in Sources */,
+				F4AD5FE22522867F00D62163 /* SpotifySignIn.swift in Sources */,
 				F462CA95251FA894001FCF7B /* PersonInfo.swift in Sources */,
 				F462CA96251FA894001FCF7B /* Device.swift in Sources */,
 				F48E722E251F959E0012780C /* Widget_for_Spotify_Widget.intentdefinition in Sources */,

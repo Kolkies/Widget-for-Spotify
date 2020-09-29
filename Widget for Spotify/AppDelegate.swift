@@ -9,6 +9,7 @@
 import UIKit
 import WidgetKit
 import BackgroundTasks
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, SPTSessionManagerDelegate, ObservableObject {
@@ -55,6 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTSessionManagerDelegate
         BGTaskScheduler.shared.register(forTaskWithIdentifier: "dev.netlob.widget-for-spotify.refresh-widget", using: nil) { task in
              self.handleAppRefresh(task: task as! BGAppRefreshTask)
         }
+        
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         // Override point for customization after application launch.
         let item = launchOptions?[.shortcutItem]

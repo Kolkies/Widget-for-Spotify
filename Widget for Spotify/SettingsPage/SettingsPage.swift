@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct SettingsPage: View {
+    @State var  showLogOutConfirm = false
+    
     var body: some View {
         Form {
             Section {
@@ -23,6 +25,18 @@ struct SettingsPage: View {
                         Image(systemName: "info.circle")
                         Text("About")
                     }
+                }
+            }
+            Section {
+                Button(action: {
+                    showLogOutConfirm = true
+                }){
+                    Text("Sign Out")
+                }
+                .alert(isPresented: $showLogOutConfirm){
+                    Alert(title: Text("Are you sure?"), message: Text("Are you sure you want to log out? This means that you have to log in again in order to use this app"), primaryButton: .destructive(Text("Log Out"), action: {
+                        SpotifyTokenHandler.logOut()
+                    }), secondaryButton: .cancel())
                 }
             }
         }

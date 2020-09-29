@@ -52,24 +52,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-
-struct SpotifySignIn: View{
-    var body: some View{
-        HStack {
-            Image("SpotifyIconWhite")
-                .resizable()
-                .frame(width: 40, height: 40, alignment: .center)
-                .padding([.top, .bottom], 12.0)
-                .padding(.leading, 20.0)
-            Text("Log in with Spotify")
-                .foregroundColor(.white)
-                .font(.system(size: 20, weight: .bold, design: .default))
-                .padding([.top, .bottom], 12)
-                .padding(.leading, 4.0)
-                .padding(.trailing, 20.0)
-            
-        }
-        .background(Color.green)
-        .cornerRadius(17.5)
-    }
-}

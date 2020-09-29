@@ -19,48 +19,52 @@ struct MainView: View {
     var body: some View {
         TabView{
             NavigationView{
-                ScrollView(.vertical){
-                    HStack {
+                HStack {
+                    ZStack{
                         VStack(alignment: .leading) {
-                            Text("Welcome " + (spotifyData.personInfo?.display_name ?? "{{ user }}"))
+                            Text("Welcome " + (spotifyData.personInfo?.display_name ?? "User"))
                                 .font(.headline)
-                            Text("Customize Widget: ")
+                            Text("Available Widgets: ")
                                 .font(.subheadline)
                             Divider()
                             Picker(selection: $currentPreviewFamily, label: Text("Widget Size")) {
                                 ForEach(WidgetSizes.allCases, id: \.self) {
-                                    Text($0.rawValue)
+                                    Text($0.rawValue == "smallCurrent" ? "Small" : "Medium")
                                 }
                             }
                             .pickerStyle(SegmentedPickerStyle())
-                            if(currentPreviewFamily == WidgetSizes.smallCurrent){
-                                ZStack(alignment: .leading){
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .fill(backgroundColor)
-                                        .aspectRatio(1.0, contentMode: .fit)
-                                    SmallCurrent(data: getExampleModel(), isInApp: true)
-                                        .foregroundColor(textColor)
+                            ZStack{
+                                if(currentPreviewFamily == WidgetSizes.smallCurrent){
+                                    ZStack(alignment: .leading){
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .fill(backgroundColor)
+                                            .aspectRatio(1.0, contentMode: .fit)
+                                        SmallCurrent(data: getExampleModel(context: spotifyData.currentlyPlayingContext), isInApp: true)
+                                            .foregroundColor(textColor)
+                                    }
+                                } else if(currentPreviewFamily == WidgetSizes.mediumCurrent){
+                                    MediumCurrent(data: getExampleModel(context: spotifyData.currentlyPlayingContext), isInApp: true)
                                 }
-                                
-                                
-                            } else if(currentPreviewFamily == WidgetSizes.mediumCurrent){
-                                MediumCurrent(data: getExampleModel(), isInApp: true)
                             }
+                            .frame(maxHeight: 160)
                             Divider()
                             ScrollView{
-                                VStack{
-                                    Text("Widget Config: ")
-                                        .font(.headline)
-                                    ColorPicker("Text Color", selection: $textColor, supportsOpacity: false)
-                                    ColorPicker("Background Color", selection: $backgroundColor, supportsOpacity: false)
-                                }
+//                                VStack{
+//                                    Text("Widget Config: ")
+//                                        .font(.headline)
+//                                    ColorPicker("Text Color", selection: $textColor, supportsOpacity: false)
+//                                    ColorPicker("Background Color", selection: $backgroundColor, supportsOpacity: false)
+//                                }
+                                Text("To Add the widgets, make sure you are running iOS 14. \n toggle 'Jiggle mode'. Then press the big plus and look under 'Widget for Spotify'")
+                                    .padding(5)
                             }
+                            Banner()
                         }
                         .navigationBarTitle("Home")
                         Spacer()
                     }
-                    .padding(.horizontal, 15)
                 }
+                .padding(.horizontal, 15)
             }
             .tabItem {
                 Image(systemName: "music.note.list")

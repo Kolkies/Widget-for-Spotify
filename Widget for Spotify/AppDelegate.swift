@@ -80,7 +80,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTSessionManagerDelegate
         DispatchQueue.main.async{
             self.spotifySession = session
         }
-        print("Refresh Token: \(session.refreshToken)")
         SpotifyTokenHandler.storeTokens(accessToken: session.accessToken, refreshToken: session.refreshToken)
         DispatchQueue.main.async {
             SpotifyTokenHandler.shared.authState = .SIGNEDIN

@@ -39,7 +39,6 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Model>) -> Void) {
         // Parsing json data and displaying...
         print("Updating Timeline")
-        debugPrint(configuration)
         if(UserDefaults(suiteName: "group.dev.netlob.widget-for-spotify")?.string(forKey: "accessToken") == nil){
             let nextUpdate = Calendar.current.date(byAdding: .second, value: Int(truncating: (configuration.refreshTime ?? 30)), to: Date())
 
@@ -112,7 +111,6 @@ struct CurrentPlayingWidgetEntryView : SwiftUI.View {
     
     init(data: Model){
         self.data = data
-        debugPrint(data.configuration)
         if(data.albumImage != nil && data.configuration.dynamicBackground?.boolValue == true){
             let colors = data.albumImage?.imageWithoutBaseline().getColors(quality: .lowest)
             self.backgroundColor = Color((colors?.background)!)

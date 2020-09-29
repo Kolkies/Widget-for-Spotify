@@ -29,7 +29,6 @@ struct ContentView: View {
 //                    .foregroundColor(.black)
                 Button(action: {
                     appDelegate.signin()
-                    print("login")
                 }) {
                     SpotifySignIn()
                 }

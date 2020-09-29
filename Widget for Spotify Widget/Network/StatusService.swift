@@ -30,7 +30,6 @@ public struct StatusService {
             case .success(let data):
                 let decoder = JSONDecoder()
                 do {
-                    debugPrint(data.count == 0)
                     if (data.count != 0) {
                         let lineStatus = try decoder.decode(CurrentlyPlayingContext.self, from: data)
                         completion?(lineStatus)

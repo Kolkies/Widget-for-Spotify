@@ -55,14 +55,14 @@ struct MainView: View {
 //                                    ColorPicker("Text Color", selection: $textColor, supportsOpacity: false)
 //                                    ColorPicker("Background Color", selection: $backgroundColor, supportsOpacity: false)
 //                                }
-                                Text("To Add the widgets, make sure you are running iOS 14. \n toggle 'Jiggle mode'. Then press the big plus and look under 'Widget for Spotify'")
+                                Text("To add one or more of the widgets, please make sure your iPhone is running iOS 14 or later.\n\n1. Long press on your homescreen to go into 'jiggle mode'.\n2. Click the '+' icon in the top-left corner\n3. Search for the Spotify widget, and follow the instructions given.\n\nProtip: if you don't want the background of the widget to change, long press on the widget, tap 'Edit Widget' and disable 'Dynamic background'. It will then follow your system theme (dark/light)!")
                                     .padding(5)
                             }
                             Banner()
                         }
                         .navigationBarTitle("Home")
                         Spacer()
-                    }
+                    }.padding(.leading, 5)
                 }
                 .padding(.horizontal, 15)
             }

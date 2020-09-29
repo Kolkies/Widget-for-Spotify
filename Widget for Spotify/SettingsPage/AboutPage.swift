@@ -18,24 +18,19 @@ struct AboutPage: View {
                 VStack(spacing: 5){
                     HStack(spacing: 0){
                         Text("Development and design: ")
-                        Link("Bram Koene", destination: URL(string: "https://github.com/minestarnl")!)
                         Spacer()
+                        Link("Bram Koene", destination: URL(string: "https://github.com/minestarnl")!)
                     }
                     HStack(spacing: 0){
                         Text("Design and distribution: ")
-                        Link("Sjoerd Bolten", destination: URL(string: "https://netlob.dev")!)
                         Spacer()
+                        Link("Sjoerd Bolten", destination: URL(string: "https://netlob.dev")!)
                     }
                     Divider()
                         .padding(.vertical, 20)
-                    Text("Know a way we can improve this app?")
-                        .multilineTextAlignment(.leading)
-                    Text("Feel free to contact us")
-                        .multilineTextAlignment(.leading)
-                    HStack{
-                        Link("Discord server", destination: URL(string: "https://discord.gg/uZ7whYj")!)
-                        Text("Ping @brem or @sjoerdini")
-                        Spacer()
+                    VStack(alignment: .leading) {
+                        Text("If you have any feedback or whatsoever, feel free to contact mail us")
+                        Link("widgetforspotify@netlob.dev", destination: URL(string: "mailto:widgetforspotify@netlob.dev")!)
                     }
                     Divider()
                         .padding(.vertical, 20)
@@ -51,9 +46,9 @@ struct AboutPage: View {
                 }
                 .multilineTextAlignment(.leading)
                 Spacer()
-            }
+            }.padding(.leading, 5)
         }
-        .padding(.horizontal, 10)
+        .padding(.horizontal, 15)
     }
 }
 

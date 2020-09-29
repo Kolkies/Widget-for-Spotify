@@ -7,16 +7,17 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
-struct MediumCurrent: View {
+struct MediumCurrent: SwiftUI.View {
     var data: Model
     var isInApp: Bool?
     
-    var body: some View {
+    var body: some SwiftUI.View {
         HStack{
             VStack{
-                if(data.widgetData.item != nil && data.albumImage != nil){
-                    Image(uiImage: (data.albumImage?.imageWithoutBaseline())!)
+                if(data.widgetData.item?.album.images[0].url != nil){
+                    KFImage(URL(string: (data.widgetData.item?.album.images[0].url)!)!)
                             .resizable()
                             .scaledToFit()
                             .cornerRadius(10)

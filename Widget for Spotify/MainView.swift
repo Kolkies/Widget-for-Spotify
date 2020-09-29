@@ -14,7 +14,7 @@ struct MainView: View {
     
     @State var backgroundColor: Color = Color.white
     @State var textColor: Color = Color.black
-    @State var currentPreviewFamily: WidgetSizes = WidgetSizes.smallCurrent
+    @State var currentPreviewFamily: WidgetSizes = WidgetSizes.mediumCurrent
     
     var body: some View {
         TabView{
@@ -73,7 +73,7 @@ struct MainView: View {
             
             NavigationView{
                 SettingsPage()
-                    .navigationBarTitle("Settings Page")
+                    .navigationBarTitle("Settings")
             }
             .tabItem {
                 Image(systemName: "gear")

@@ -34,7 +34,6 @@
 		F462CAAD251FC69D001FCF7B /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = F462CAAC251FC69D001FCF7B /* URLImage */; };
 		F462CAB0251FC6A7001FCF7B /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = F462CAAF251FC6A7001FCF7B /* URLImage */; };
 		F472C1BC251C6A50000E7318 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F472C1B3251C695E000E7318 /* SpotifyiOS.framework */; };
-		F472C1BD251C6A50000E7318 /* SpotifyiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F472C1B3251C695E000E7318 /* SpotifyiOS.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F472C1CE251DE51C000E7318 /* URL.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472C1CD251DE51C000E7318 /* URL.extension.swift */; };
 		F472C1D1251E32C6000E7318 /* SpotifyTokenHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472C1D0251E32C6000E7318 /* SpotifyTokenHandler.swift */; };
 		F472C1DD251E795F000E7318 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F472C1DC251E795F000E7318 /* Alamofire */; };
@@ -121,7 +120,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F472C1BD251C6A50000E7318 /* SpotifyiOS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 1;
@@ -192,7 +190,7 @@
 		F4AD5FA12521E43F00D62163 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		F4AD5FAB2521E65300D62163 /* WidgetIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetIntents.entitlements; sourceTree = "<group>"; };
 		F4AD5FB02522370600D62163 /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
-		F4AD5FB32522371600D62163 /* AboutPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPage.swift; sourceTree = "<group>"; };
+		F4AD5FB32522371600D62163 /* AboutPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPage.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		F4AD5FB6252238C800D62163 /* AddingAWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingAWidget.swift; sourceTree = "<group>"; };
 		F4AD5FBC25223C5200D62163 /* WidgetSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSizes.swift; sourceTree = "<group>"; };
 		F4AD5FC025223C8200D62163 /* SmallCurrent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCurrent.swift; sourceTree = "<group>"; };

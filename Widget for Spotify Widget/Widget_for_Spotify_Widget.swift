@@ -51,7 +51,7 @@ struct Provider: IntentTimelineProvider {
             StatusService.getStatus(client: NetworkClient()){ updates in
                 debugPrint(updates!)
                 if((updates?.is_playing) == true){
-                    KingfisherManager.shared.retrieveImage(with: URL(string: (updates?.item?.album.images[0].url)!)!){ result in
+                    KingfisherManager.shared.retrieveImage(with: URL(string: (updates?.item?.album.images.last?.url)!)!){ result in
                         debugPrint(result)
                         switch result{
                         case .success(let value):
@@ -93,6 +93,24 @@ struct CurrentPlayingWidgetEntryView : SwiftUI.View {
 
     var data: Model
     
+    var backgroundColor: SwiftUI.Color?
+    var textColor: SwiftUI.Color?
+    var useCustomBackground: Bool = false
+    
+    init(data: Model){
+        self.data = data
+        debugPrint(data.configuration.dynamicBackground)
+//        if(data.albumImage != nil && data.configuration.dynamicBackground == true){
+//            let colors = data.albumImage?.imageWithoutBaseline().getColors(quality: .lowest)
+//            self.backgroundColor = Color((colors?.background)!)
+//            self.textColor = Color((colors?.primary)!)
+//            self.useCustomBackground = true
+//        }else{
+            self.backgroundColor = Color("WidgetBackgroundColor")
+            self.textColor = Color("WidgetTextColor")
+//        }
+    }
+    
     var body: some SwiftUI.View{
         if(data.widgetData.device.type == "NOLOGIN"){
             VStack{
@@ -108,36 +126,7 @@ struct CurrentPlayingWidgetEntryView : SwiftUI.View {
             HStack {
                 switch family{
                 case .systemSmall:
-                    HStack {
-                        VStack(alignment: .leading, spacing: 3.0) {
-                            if(data.widgetData.item != nil && data.albumImage != nil){
-                                Image(uiImage: (data.albumImage?.imageWithoutBaseline())!)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .cornerRadius(10)
-                                        .shadow(color: .black, radius: 2)
-                            } else {
-                                Image(data.widgetData.device.name == "Nothing Playing" ? "SpotifyIconGreen" : "PreviewArtAsset")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .cornerRadius(10)
-                                    .shadow(color: .black, radius: data.widgetData.device.name == "Nothing Playing" ? 0 : 2, x: data.widgetData.device.name == "Nothing Playing" ? 0 : 2, y: data.widgetData.device.name == "Nothing Playing" ? 0 : 2)
-                            }
-                            
-                            Text(data.widgetData.item?.name ?? "No Song Playing")
-                                .font(.subheadline)
-                                .fontWeight(.bold)
-                                .multilineTextAlignment(.leading)
-                                .padding(.top, 3.0)
-                            Text(data.widgetData.device.name)
-                                .font(.footnote)
-                        }
-                        .padding(.vertical, 12.0)
-                        .padding(.horizontal, 15.0)
-            //            .padding(.bottom, 10.0)
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-                        Spacer()
-                    }
+                    SmallCurrentWidget(data: data, useCustomBackground: useCustomBackground)
                 case .systemMedium:
                     HStack{
                         VStack{
@@ -204,7 +193,8 @@ struct CurrentPlayingWidgetEntryView : SwiftUI.View {
                     Text("An unknown error occured")
                 }
             }
-            .background(data.widgetData.item != nil ? Color("BackgroundColor") : Color("BackgroundColor"))
+            .background(backgroundColor)
+            .foregroundColor(textColor)
         }
     }
 }
@@ -225,3 +215,23 @@ struct CurrentPlayingWidget: Widget {
         }
     }
 }
+
+@propertyWrapper
+struct StoredOnHeap<T> {
+    private var value: [T]
+
+    init(wrappedValue: T) {
+        self.value = [wrappedValue]
+    }
+
+    var wrappedValue: T {
+        get {
+            return self.value[0]
+        }
+
+        set {
+            self.value[0] = newValue
+        }
+    }
+}
+

@@ -106,7 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTSessionManagerDelegate
     let requestedScopes: SPTScope = [.appRemoteControl, .userReadCurrentlyPlaying, .userReadPlaybackState]
     
     func signin(){
-        self.sessionManager.alwaysShowAuthorizationDialog = true
+        self.sessionManager.alwaysShowAuthorizationDialog = false
         self.sessionManager.initiateSession(with: requestedScopes, options: .default)
         sessionManager.renewSession()
     }

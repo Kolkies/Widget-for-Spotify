@@ -16,22 +16,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SpotifyIconGreen" translatesAutoresizingMaskIntoConstraints="NO" id="gOo-FW-ddy">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="WidgetIcon" translatesAutoresizingMaskIntoConstraints="NO" id="gOo-FW-ddy">
+                                <rect key="frame" x="110" y="204" width="195" height="195"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Widget for Spotify" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIm-Ya-OMU">
+                                <rect key="frame" x="69" y="483" width="276" height="35"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="29"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eIm-Ya-OMU" secondAttribute="trailing" constant="69" id="CK9-lC-NC6"/>
+                            <constraint firstItem="eIm-Ya-OMU" firstAttribute="top" secondItem="gOo-FW-ddy" secondAttribute="bottom" constant="84" id="eBr-YT-95d"/>
+                            <constraint firstItem="gOo-FW-ddy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="160" id="iqj-Dg-xxH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gOo-FW-ddy" secondAttribute="trailing" constant="109" id="mOG-Rc-Teq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eIm-Ya-OMU" secondAttribute="bottom" constant="344" id="nXm-BB-yfr"/>
+                            <constraint firstItem="eIm-Ya-OMU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="69" id="sT7-cN-xzg"/>
+                            <constraint firstItem="gOo-FW-ddy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="110" id="yDp-Dd-cdK"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
     <resources>
-        <image name="SpotifyIconGreen" width="709" height="709"/>
+        <image name="WidgetIcon" width="1024" height="1024"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

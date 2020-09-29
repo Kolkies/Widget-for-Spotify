@@ -23,7 +23,6 @@ struct ContentView: View {
                 Text("Please login with Spotify to continue")
                     .font(.system(size: 30, weight: .bold, design: .default))
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.black)
 //                Text("Please press the button below to sign in and access this app")
 //                    .font(.subheadline)
 //                    .multilineTextAlignment(.center)

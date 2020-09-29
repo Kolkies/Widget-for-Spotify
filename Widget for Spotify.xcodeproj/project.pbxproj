@@ -17,6 +17,7 @@
 		F4206CA2252386ED003560AD /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4206CA0252386ED003560AD /* UIImageColors.swift */; };
 		F4206CA825238F3C003560AD /* SmallCurrentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4206CA725238F3B003560AD /* SmallCurrentWidget.swift */; };
 		F4206CA925238F3C003560AD /* SmallCurrentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4206CA725238F3B003560AD /* SmallCurrentWidget.swift */; };
+		F4206CB0252396F5003560AD /* Widget_for_Spotify_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F48E722A251F959D0012780C /* Widget_for_Spotify_Widget.intentdefinition */; };
 		F43B1569251F9D6100E95BB1 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F472C1B3251C695E000E7318 /* SpotifyiOS.framework */; };
 		F45C602125210997005088B4 /* WidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C602025210997005088B4 /* WidgetBundle.swift */; };
 		F462CA92251FA894001FCF7B /* SpotifyContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E71F2251F86BB0012780C /* SpotifyContext.swift */; };
@@ -677,6 +678,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4AD5FA22521E43F00D62163 /* Intents.intentdefinition in Sources */,
+				F4206CB0252396F5003560AD /* Widget_for_Spotify_Widget.intentdefinition in Sources */,
 				F4AD5F982521E42900D62163 /* IntentHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,26 +16,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="WidgetIcon" translatesAutoresizingMaskIntoConstraints="NO" id="gOo-FW-ddy">
-                                <rect key="frame" x="110" y="204" width="195" height="195"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Widget for Spotify" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIm-Ya-OMU">
-                                <rect key="frame" x="69" y="483" width="276" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Widget for Spotify" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIm-Ya-OMU">
+                                <rect key="frame" x="94.5" y="483" width="225" height="35"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="29"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WidgetIcon" translatesAutoresizingMaskIntoConstraints="NO" id="gOo-FW-ddy">
+                                <rect key="frame" x="107" y="239" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="0SL-2i-9Zg"/>
+                                    <constraint firstAttribute="width" constant="200" id="Ib4-Vg-chh"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eIm-Ya-OMU" secondAttribute="trailing" constant="69" id="CK9-lC-NC6"/>
-                            <constraint firstItem="eIm-Ya-OMU" firstAttribute="top" secondItem="gOo-FW-ddy" secondAttribute="bottom" constant="84" id="eBr-YT-95d"/>
-                            <constraint firstItem="gOo-FW-ddy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="160" id="iqj-Dg-xxH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gOo-FW-ddy" secondAttribute="trailing" constant="109" id="mOG-Rc-Teq"/>
+                            <constraint firstItem="gOo-FW-ddy" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="nXV-Wp-Tcq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eIm-Ya-OMU" secondAttribute="bottom" constant="344" id="nXm-BB-yfr"/>
-                            <constraint firstItem="eIm-Ya-OMU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="69" id="sT7-cN-xzg"/>
-                            <constraint firstItem="gOo-FW-ddy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="110" id="yDp-Dd-cdK"/>
+                            <constraint firstItem="eIm-Ya-OMU" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="trO-fz-ObY"/>
+                            <constraint firstItem="gOo-FW-ddy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="195" id="xzM-51-wlZ"/>
+                            <constraint firstItem="gOo-FW-ddy" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="yGA-Uj-zyB"/>
                         </constraints>
                     </view>
                 </viewController>

@@ -30,10 +30,12 @@
 			<array/>
 			<key>IntentsSupported</key>
 			<array>
+				<string>ConfigurationIntent</string>
 				<string>INSearchForMessagesIntent</string>
 				<string>INSendMessageIntent</string>
 				<string>INSetMessageAttributeIntent</string>
 				<string>RefreshWidgetIntent</string>
+				<string>Widget_for_Spotify_Widget</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>

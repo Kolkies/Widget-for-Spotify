@@ -20,13 +20,14 @@ struct SmallCurrentWidget: View {
                             .resizable()
                             .scaledToFit()
                             .cornerRadius(10)
-                            .shadow(color: .black, radius: 2)
+                            .shadow(color: .black, radius: useCustomBackground == true ? 0 : 2)
                 } else {
                     Image(data.widgetData.device.name == "Nothing Playing" ? "SpotifyIconGreen" : "PreviewArtAsset")
                         .resizable()
                         .scaledToFit()
                         .cornerRadius(10)
-                    shadow(color: .black, radius: data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2,
+                        .shadow(color: .black,
+                           radius: data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2,
                            x: data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2,
                            y: data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2)
                 }

@@ -32,34 +32,47 @@ struct Provider: IntentTimelineProvider {
         return Model(date: Date(), widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: nil), configuration: ConfigurationIntent(), albumImage: nil, playlistName: nil)
     }
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Model) -> Void) {
-        let loadingData = Model(date: Date(), widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: nil), configuration: ConfigurationIntent(), albumImage: nil, playlistName: nil)
+        let loadingData = Model(date: Date(), widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: nil), configuration: configuration, albumImage: nil, playlistName: nil)
         completion(loadingData)
     }
     
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Model>) -> Void) {
         // Parsing json data and displaying...
         print("Updating Timeline")
+        debugPrint(configuration)
         if(UserDefaults(suiteName: "group.dev.netlob.widget-for-spotify")?.string(forKey: "accessToken") == nil){
             let nextUpdate = Calendar.current.date(byAdding: .second, value: Int(truncating: (configuration.refreshTime ?? 30)), to: Date())
 
-            let data = Model(date: nextUpdate!, widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "NOLOGIN"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: nil), configuration: ConfigurationIntent(), albumImage: nil, playlistName: nil)
+            let data = Model(date: nextUpdate!, widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "NOLOGIN"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: nil), configuration: configuration, albumImage: nil, playlistName: nil)
 
             let timeline = Timeline(entries: [data], policy: .after(nextUpdate!))
 
             completion(timeline)
         }else{
             StatusService.getStatus(client: NetworkClient()){ updates in
-                debugPrint(updates!)
                 if((updates?.is_playing) == true){
-                    KingfisherManager.shared.retrieveImage(with: URL(string: (updates?.item?.album.images.last?.url)!)!){ result in
-                        debugPrint(result)
+                    KingfisherManager.shared.retrieveImage(with: URL(string: (updates?.item?.album.images[1].url)!)!){ result in
                         switch result{
                         case .success(let value):
-                            debugPrint(value)
+                            var playlistName: String? = nil
+                            if(updates?.item?.album.album_type != "single"){
+                                playlistName = updates?.item?.name
+                            }else{
+                                updates?.item?.artists.forEach{ artist in
+                                    if(playlistName == nil){
+                                        playlistName = ""
+                                        playlistName?.append(artist.name)
+                                    }
+                                    else {
+                                        playlistName?.append(", ")
+                                        playlistName?.append(artist.name)
+                                    }
+                                }
+                            }
                             
                             let nextUpdate = Calendar.current.date(byAdding: .second, value: Int(truncating: configuration.refreshTime ?? 30), to: Date())
 
-                            let data = Model(date: nextUpdate!, widgetData: updates!, configuration: ConfigurationIntent(), albumImage: value.image, playlistName: nil)
+                            let data = Model(date: nextUpdate!, widgetData: updates!, configuration: configuration, albumImage: value.image, playlistName: playlistName)
 
                             let tomorrow = Calendar.current.date(byAdding: .second, value: 20, to: Date())!
                             let timeline = Timeline(entries: [data], policy: .after(tomorrow))
@@ -75,7 +88,7 @@ struct Provider: IntentTimelineProvider {
                     
                     let nextUpdate = Calendar.current.date(byAdding: .second, value: Int(truncating: (configuration.refreshTime ?? 30)), to: Date())
 
-                    let data = Model(date: nextUpdate!, widgetData: updates!, configuration: ConfigurationIntent(), albumImage: nil, playlistName: nil)
+                    let data = Model(date: nextUpdate!, widgetData: updates!, configuration: configuration, albumImage: nil, playlistName: nil)
 
                     let timeline = Timeline(entries: [data], policy: .after(nextUpdate!))
 
@@ -99,16 +112,16 @@ struct CurrentPlayingWidgetEntryView : SwiftUI.View {
     
     init(data: Model){
         self.data = data
-        debugPrint(data.configuration.dynamicBackground)
-//        if(data.albumImage != nil && data.configuration.dynamicBackground == true){
-//            let colors = data.albumImage?.imageWithoutBaseline().getColors(quality: .lowest)
-//            self.backgroundColor = Color((colors?.background)!)
-//            self.textColor = Color((colors?.primary)!)
-//            self.useCustomBackground = true
-//        }else{
+        debugPrint(data.configuration)
+        if(data.albumImage != nil && data.configuration.dynamicBackground?.boolValue == true){
+            let colors = data.albumImage?.imageWithoutBaseline().getColors(quality: .lowest)
+            self.backgroundColor = Color((colors?.background)!)
+            self.textColor = Color((colors?.primary)!)
+            self.useCustomBackground = true
+        }else{
             self.backgroundColor = Color("WidgetBackgroundColor")
             self.textColor = Color("WidgetTextColor")
-//        }
+        }
     }
     
     var body: some SwiftUI.View{
@@ -134,8 +147,11 @@ struct CurrentPlayingWidgetEntryView : SwiftUI.View {
                                 Image(uiImage: (data.albumImage?.imageWithoutBaseline())!)
                                         .resizable()
                                         .scaledToFit()
-                                        .cornerRadius(10)
-                                        .shadow(color: .black, radius: 2, x: 2, y: 2)
+                                    .cornerRadius(useCustomBackground ? 5 : 10)
+                                    .shadow(color: .black,
+                                            radius: useCustomBackground ? 0 : 2,
+                                            x: useCustomBackground ? 0 : 2,
+                                            y: useCustomBackground ? 0 : 2)
                             } else {
                                 Image(data.widgetData.device.name == "Nothing Playing" ? "SpotifyIconGreen" : "PreviewArtAsset")
                                     .resizable()
@@ -143,7 +159,10 @@ struct CurrentPlayingWidgetEntryView : SwiftUI.View {
                                     .cornerRadius(10)
                                     .padding(.bottom, 15)
                                     .padding(.horizontal, 2)
-                                    .shadow(color: .black, radius: data.widgetData.device.name == "Nothing Playing" ? 0 : 2, x: data.widgetData.device.name == "Nothing Playing" ? 0 : 2, y: data.widgetData.device.name == "Nothing Playing" ? 0 : 2)
+                                    .shadow(color: .black,
+                                            radius: data.widgetData.device.name == "Nothing Playing" || useCustomBackground ? 0 : 2,
+                                            x: data.widgetData.device.name == "Nothing Playing" || useCustomBackground ? 0 : 2,
+                                            y: data.widgetData.device.name == "Nothing Playing" || useCustomBackground ? 0 : 2)
                             }
                             
                             Spacer()
@@ -152,15 +171,15 @@ struct CurrentPlayingWidgetEntryView : SwiftUI.View {
                         VStack{
                             VStack(alignment: .leading, spacing: 3) {
                                 Text("Now Playing: ")
-                                    .font(.headline)
+                                    .font(.subheadline)
                                     .fontWeight(.bold)
                                     .multilineTextAlignment(.leading)
                                 Text(data.widgetData.item?.name ?? "No Song Playing")
-                                    .font(.subheadline)
+                                    .font(.headline)
                                     .fontWeight(.semibold)
                                     .multilineTextAlignment(.leading)
                                     .padding(.top, 2.0)
-                                Text(data.playlistName ?? data.widgetData.item?.album.name ?? "")
+                                Text(data.playlistName ?? "")
                                     .font(.subheadline)
                                     .fontWeight(.regular)
                                 Text(data.widgetData.device.name)

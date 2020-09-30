@@ -61,7 +61,7 @@ struct MainView: View {
                                 
                                 Divider()
                                 
-                                Text("To add one or more of the widgets, please make sure your iPhone is running iOS 14 or later.\n\n1. Long press on your homescreen to go into 'jiggle mode'.\n2. Click the '+' icon in the top-left corner\n3. Search for the Spotify widget, and follow the instructions given.\n\nProtip: if you don't want the background of the widget to change, long press on the widget, tap 'Edit Widget' and disable 'Dynamic background'. It will then follow your system theme (dark/light)!\n\nProtip 2: Due to limitations from iOS, the widget may not update live and you’ll have to click on the widget to refresh. Just open the app by clicking the widget. Then you can directly close the app. This will force a refresh. We are working on a fix :)")
+                                Text("To add one or more of the widgets, please make sure your iPhone is running iOS 14 or later.\n\n1. Long press on your homescreen to go into 'jiggle mode'.\n2. Click the '+' icon in the top-left corner\n3. Search for the Spotify widget, and follow the instructions given.\n\nProtip: if you don't want the background of the widget to change, long press on the widget, tap 'Edit Widget' and disable 'Dynamic background'. It will then follow your system theme (dark/light)!\n\nProtip 2: Due to limitations, the widget may not update live and you’ll have to click on the widget to refresh. Just open the app by clicking the widget. Then you can directly close the app. This will force a refresh. We are working on a fix :)")
                                     .padding(5)
                                     .padding(.bottom, 100)
     //                            }
@@ -74,7 +74,7 @@ struct MainView: View {
                                     Image(systemName: "info.circle").imageScale(.large)
                                 }
                                 .alert(isPresented: $showingAlert){
-                                    Alert(title: Text("Unable to refresh continuously"), message: Text("Due to limitations from iOS, the widget may not update live and you’ll have to click on the widget to refresh. Just open the app by clicking the widget. Then you can directly close the app. This will force a refresh. We are working on a fix :)"), dismissButton: .default(Text("Got it!")))
+                                    Alert(title: Text("Unable to refresh continuously"), message: Text("Due to limitations, the widget may not update live and you’ll have to click on the widget to refresh. Just open the app by clicking the widget. Then you can directly close the app. This will force a refresh. We are working on a fix :)"), dismissButton: .default(Text("Got it!")))
                                 }
                             )
                         }

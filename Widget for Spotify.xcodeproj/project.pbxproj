@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E24022F2523F9E00097A6AF /* UpcomingFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E24022E2523F9E00097A6AF /* UpcomingFeatures.swift */; };
 		1E8D1FF7251BDB2B00343593 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D1FF6251BDB2B00343593 /* AppDelegate.swift */; };
 		1E8D1FF9251BDB2B00343593 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D1FF8251BDB2B00343593 /* SceneDelegate.swift */; };
 		1E8D1FFB251BDB2B00343593 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D1FFA251BDB2B00343593 /* ContentView.swift */; };
@@ -155,6 +156,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1E24022E2523F9E00097A6AF /* UpcomingFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingFeatures.swift; sourceTree = "<group>"; };
 		1E8D1FF3251BDB2B00343593 /* Widget for Spotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Widget for Spotify.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8D1FF6251BDB2B00343593 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8D1FF8251BDB2B00343593 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 				F4AD5FB32522371600D62163 /* AboutPage.swift */,
 				F4AD5FB6252238C800D62163 /* AddingAWidget.swift */,
 				F420674B2523CB8200FBDAA2 /* ThirdParty.swift */,
+				1E24022E2523F9E00097A6AF /* UpcomingFeatures.swift */,
 			);
 			path = SettingsPage;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				F4AD5FB12522370600D62163 /* SettingsPage.swift in Sources */,
 				F48E7208251F93DE0012780C /* ResumePoint.swift in Sources */,
 				F420674C2523CB8200FBDAA2 /* ThirdParty.swift in Sources */,
+				1E24022F2523F9E00097A6AF /* UpcomingFeatures.swift in Sources */,
 				F48E722F251F959E0012780C /* Widget_for_Spotify_Widget.intentdefinition in Sources */,
 				F4AD5FC425223CA800D62163 /* Widget_for_Spotify_Widget.swift in Sources */,
 				F48E71E4251F75800012780C /* ImageObject.swift in Sources */,

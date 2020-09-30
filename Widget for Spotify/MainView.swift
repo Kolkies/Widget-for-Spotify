@@ -12,7 +12,7 @@ import WidgetKit
 struct MainView: View {
     @ObservedObject var spotifyData = SpotifyData.shared
     
-    @State private var devMode = true
+    @State private var devMode = false
     
     @State private var showingAlert = false
     
@@ -30,62 +30,88 @@ struct MainView: View {
     var body: some View {
         TabView{
             NavigationView{
-                HStack {
-                    ZStack{
-                        VStack(alignment: .leading) {
-                            Text("Welcome " + (spotifyData.personInfo?.display_name ?? "User"))
-                                .font(.headline)
-//                            Text("Available Widgets: ")
-//                                .font(.subheadline)
-                            Divider()
-//                            Picker(selection: $currentPreviewFamily, label: Text("Widget Size")) {
-//                                ForEach(WidgetSizes.allCases, id: \.self) {
-//                                    Text($0.rawValue == "smallCurrent" ? "Small" : "Medium")
+                ZStack(alignment: .bottom) {
+                    ScrollView{
+                        ZStack{
+                            VStack(alignment: .leading) {
+                                Text("Welcome " + (spotifyData.personInfo?.display_name ?? "User"))
+                                    .font(.headline)
+    //                            Text("Available Widgets: ")
+    //                                .font(.subheadline)
+                                Divider()
+    //                            Picker(selection: $currentPreviewFamily, label: Text("Widget Size")) {
+    //                                ForEach(WidgetSizes.allCases, id: \.self) {
+    //                                    Text($0.rawValue == "smallCurrent" ? "Small" : "Medium")
+    //                                }
+    //                            }
+    //                            .pickerStyle(SegmentedPickerStyle())
+//                                ZStack{
+    //                                if(currentPreviewFamily == WidgetSizes.smallCurrent){
+    //                                    ZStack(alignment: .leading){
+    //                                        RoundedRectangle(cornerRadius: 20)
+    //                                            .aspectRatio(1.0, contentMode: .fit)
+    //                                        SmallCurrent(data: getExampleModel(context: spotifyData.currentlyPlayingContext), isInApp: true)
+    //                                    }
+    //                                } else if(currentPreviewFamily == WidgetSizes.mediumCurrent){
+                                MediumCurrent(data: getExampleModel(context: spotifyData.currentlyPlayingContext), isInApp: true).frame(height: 115)
+    //                                }
 //                                }
-//                            }
-//                            .pickerStyle(SegmentedPickerStyle())
-                            ZStack{
-//                                if(currentPreviewFamily == WidgetSizes.smallCurrent){
-//                                    ZStack(alignment: .leading){
-//                                        RoundedRectangle(cornerRadius: 20)
-//                                            .aspectRatio(1.0, contentMode: .fit)
-//                                        SmallCurrent(data: getExampleModel(context: spotifyData.currentlyPlayingContext), isInApp: true)
-//                                    }
-//                                } else if(currentPreviewFamily == WidgetSizes.mediumCurrent){
-                                    MediumCurrent(data: getExampleModel(context: spotifyData.currentlyPlayingContext), isInApp: true)
+
+                                Divider()
+//                                HStack{
+//
 //                                }
-                            }
-                            .frame(maxHeight: 160)
-                            Divider()
-                            ScrollView{
-//                                VStack{
-//                                    Text("Widget Config: ")
-//                                        .font(.headline)
-//                                    ColorPicker("Text Color", selection: $textColor, supportsOpacity: false)
-//                                    ColorPicker("Background Color", selection: $backgroundColor, supportsOpacity: false)
-//                                }
+                                Button(action: {
+                                    showingAlert = true
+                                }, label: {
+                                    Image(systemName: "info.circle")
+                                    Text("Help! The widget doesn't update live")
+                                })
+                                .padding(.leading, 5)
+                                .padding(.top, 5)
+                                Divider()
+                                Button(action: {
+                                    UIApplication.shared.open(URL(string: "https://apps.apple.com/app/apple-store/id1526912392?pt=121772327&ct=Widget%20for%20Spotify&mt=8")!, options: [:])
+                                }, label: {
+                                    Image(systemName: "chart.pie")
+                                    Text("Check your (advanced) Spotify stats")
+                                })
+                                .padding(.leading, 5)
+                                .padding(.top, 5)
+                                Divider()
+    //                            ScrollView{
+    //                                VStack{
+    //                                    Text("Widget Config: ")
+    //                                        .font(.headline)
+    //                                    ColorPicker("Text Color", selection: $textColor, supportsOpacity: false)
+    //                                    ColorPicker("Background Color", selection: $backgroundColor, supportsOpacity: false)
+    //                                }
                                 Text("To add one or more of the widgets, please make sure your iPhone is running iOS 14 or later.\n\n1. Long press on your homescreen to go into 'jiggle mode'.\n2. Click the '+' icon in the top-left corner\n3. Search for the Spotify widget, and follow the instructions given.\n\nProtip: if you don't want the background of the widget to change, long press on the widget, tap 'Edit Widget' and disable 'Dynamic background'. It will then follow your system theme (dark/light)!\n\nProtip 2: Due to limitations from iOS, the widget may not update live and you’ll have to click on the widget to refresh. Just open the app by clicking the widget. Then you can directly close the app. This will force a refresh. We are working on a fix :)")
                                     .padding(5)
+                                    .padding(.bottom, 100)
+    //                            }
                             }
-                            if(!devMode){
-                                Banner()
-                            }
+                            .navigationBarTitle("Home")
+                            .navigationBarItems(trailing:
+                                Button(action: {
+                                    showingAlert = true
+                                }) {
+                                    Image(systemName: "info.circle").imageScale(.large)
+                                }
+                                .alert(isPresented: $showingAlert){
+                                    Alert(title: Text("Unable to refresh continuously"), message: Text("Due to limitations from iOS, the widget may not update live and you’ll have to click on the widget to refresh. Just open the app by clicking the widget. Then you can directly close the app. This will force a refresh. We are working on a fix :)"), dismissButton: .default(Text("Got it!")))
+                                }
+                            )
                         }
-                        .navigationBarTitle("Home")
-                        .navigationBarItems(trailing:
-                            Button(action: {
-                                showingAlert = true
-                            }) {
-                                Image(systemName: "info.circle").imageScale(.large)
-                            }
-                            .alert(isPresented: $showingAlert){
-                                Alert(title: Text("Unable to refresh continuously"), message: Text("Due to limitations from iOS, the widget may not update live and you’ll have to click on the widget to refresh :)"), dismissButton: .default(Text("Got it!")))
-                            }
-                        )
                         Spacer()
-                    }.padding(.leading, 5)
+                    }
+                    .padding(.horizontal, 15)
+                    .padding(.leading, 5)
+                    
+                    if(!devMode){
+                        Banner()
+                    }
                 }
-                .padding(.horizontal, 15)
             }
             .tabItem {
                 Image(systemName: "music.note.list")

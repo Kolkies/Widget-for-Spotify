@@ -15,5 +15,5 @@ public enum WidgetSizes: String, CaseIterable {
 }
 
 func getExampleModel(context: CurrentlyPlayingContext?) -> Model {
-    return Model(date: Date(), widgetData: context ?? CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: nil), configuration: ConfigurationIntent(), albumImage: nil, playlistName: nil)
+    return Model(date: Date(), widgetData: context ?? CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: nil), configuration: ConfigurationIntent(), albumImage: nil, playlistName: nil, artistName: nil)
 }

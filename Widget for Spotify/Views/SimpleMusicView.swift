@@ -31,7 +31,7 @@ struct SimpleMusicView: View {
                         .shadow(color: .black, radius: 2, x: 2, y: 2)
                 }
                 
-                Text(spotifyData.currentlyPlayingContext?.item?.name ?? "No Song Playing")
+                Text(spotifyData.currentlyPlayingContext?.item?.name ?? "Nothing playing right now")
                     .font(.subheadline)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.leading)

@@ -20,24 +20,38 @@ struct SmallCurrentWidget: View {
                             .resizable()
                             .scaledToFit()
                             .cornerRadius(10)
-                            .shadow(color: .black, radius: useCustomBackground == true ? 0 : 2)
+                            .shadow(
+//                                color: Color.black.opacity(0.5),
+//                                radius: useCustomBackground == true ? 0 : 2
+                                color: Color.black.opacity(0.3),
+                                radius: 5,
+                                x: 0, //data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2,
+                                y: 0 //data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2
+                            )
                 } else {
                     Image(data.widgetData.device.name == "Nothing Playing" ? "SpotifyIconGreen" : "PreviewArtAsset")
                         .resizable()
                         .scaledToFit()
                         .cornerRadius(10)
-                        .shadow(color: .black,
-                           radius: data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2,
-                           x: data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2,
-                           y: data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2)
+                        .shadow(
+//                            color: Color.black.opacity(0.5),
+//                            radius: data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2,
+//                            x: 0, //data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2,
+//                            y: 0 //data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2
+                            
+                             color: Color.black.opacity(0.3),
+                             radius: 5,
+                             x: 0, //data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2,
+                             y: 0 //data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2
+                        )
                 }
                 
-                Text(data.widgetData.item?.name ?? "No Song Playing")
+                Text(data.widgetData.item?.name ?? "Nothing playing right now")
                     .font(.subheadline)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.leading)
                     .padding(.top, 3.0)
-                Text(data.widgetData.device.name)
+                Text(data.artistName ?? "")
                     .font(.footnote)
             }
             .padding(.vertical, 12.0)

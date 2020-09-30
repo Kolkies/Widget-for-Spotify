@@ -10,12 +10,13 @@ import SwiftUI
 
 struct AboutPage: View {
     var body: some View {
-        HStack(alignment: .top, spacing: 5){
-            VStack(alignment: .leading, spacing: 5) {
-                Text("Credits")
-                    .font(.title3)
-                    .padding(.top, 15)
-                VStack(spacing: 5){
+        ScrollView {
+            VStack(alignment: .leading, spacing: 5){
+                VStack(alignment: .leading) {
+                    Text("Credits")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .padding(.top, 15)
                     HStack(spacing: 0){
                         Text("Development and design: ")
                         Spacer()
@@ -26,36 +27,37 @@ struct AboutPage: View {
                         Spacer()
                         Link("Sjoerd Bolten", destination: URL(string: "https://netlob.dev")!)
                     }
-                    Divider()
-                        .padding(.vertical, 20)
-                    VStack(alignment: .leading) {
-                        Text("If you have any feedback or whatsoever, feel free to contact mail us")
-                        Link("widgetforspotify@netlob.dev", destination: URL(string: "mailto:widgetforspotify@netlob.dev")!)
-                    }
-                    Divider()
-                        .padding(.vertical, 20)
+                }
+                
+                Divider().padding(.vertical, 10)
+                
+                VStack(alignment: .leading) {
+                    Text("Feedback")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    Text("If you have any feedback or whatsoever, feel free to contact mail us")
+                    Link("widgetforspotify@netlob.dev", destination: URL(string: "mailto:widgetforspotify@netlob.dev")!)
+                }
+                
+                Divider().padding(.vertical, 10)
+                
+                VStack(alignment: .leading) {
+                    Text("Copyright")
+                        .font(.title2)
+                        .fontWeight(.semibold)
                     HStack(spacing: 0){
-                        Text("Spotify logo and branding owned by: ")
+                        Text("Spotify logo and branding owned by ")
                         Link("Spotify AB", destination: URL(string: "https://spotify.com")!)
                         Spacer()
                     }
-                    NavigationLink(destination: ThirdParty().navigationBarTitle("Third Party")){
-                        HStack{
-                            Image(systemName: "info.circle")
-                            Text("Third party Software")
-                            Spacer()
-                        }
-                    }
-                    Divider()
-                        .padding(.vertical, 20)
-                    Text("We claim no rights to any work shown using this app. This is just a medium for users to quickly see what they are listenening. All rights belong to the original authors.")
-                        .padding(.horizontal, 0)
+                    Text("\nWe claim no rights to any (art) work shown using this app. This is just a medium for users to quickly see what they are listenening. All rights belong to the original authors.")
+                    Text("\nThis appand their respective authors fully comply with the Spotify Branding Guidelines and the Spotify Developer Terms of Service, which can be found below:")
+                    Link("Spotify Branding Guidelines", destination: URL(string: "https://developer.spotify.com/branding-guidelines/")!)
+                    Link("Spotify Developer Terms of Service", destination: URL(string: "https://developer.spotify.com/terms/")!)
                 }
-                .multilineTextAlignment(.leading)
                 Spacer()
-            }.padding(.leading, 5)
+            }.padding(.horizontal, 20)
         }
-        .padding(.horizontal, 15)
     }
 }
 

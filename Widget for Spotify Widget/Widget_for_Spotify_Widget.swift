@@ -21,6 +21,7 @@ struct Model : TimelineEntry {
     let configuration: ConfigurationIntent
     let albumImage: Kingfisher.KFCrossPlatformImage?
     let playlistName: String?
+    let artistName: String?
 }
 
 struct Provider: IntentTimelineProvider {
@@ -29,10 +30,10 @@ struct Provider: IntentTimelineProvider {
     public typealias Intent = ConfigurationIntent
     
     public func placeholder(in context: Context) -> Model {
-        return Model(date: Date(), widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "My iPhone", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true,item: FullTrack(album: SimplifiedAlbum(album_type: "single", artists: [], available_markets: [], external_urls: ["": ""], href: "", id: "", images: [], name: "", release_date: "", release_date_precision: "", restrictions: nil, type: "", uri: ""), artists: [SimplifiedArtist(external_urls: ["":""], href: "", id: "", name: "Billie Eilish", type: "artist", uri: "")], available_markets: [], disc_number: 1, duration_ms: 23423, explicit: true, external_ids: ["": ""], external_urls: ["":""], href: "", id: "", is_playable: true, linked_from: "", restrictions: "", name: "my future", popularity: 23, preview_url: "", track_number: 1, type: "single", uri: "", is_local: false), currently_playing_type: "Song", actions: nil), configuration: ConfigurationIntent(), albumImage: nil, playlistName: nil)
+        return Model(date: Date(), widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "My iPhone", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true,item: FullTrack(album: SimplifiedAlbum(album_type: "single", artists: [], available_markets: [], external_urls: ["": ""], href: "", id: "", images: [], name: "", release_date: "", release_date_precision: "", restrictions: nil, type: "", uri: ""), artists: [SimplifiedArtist(external_urls: ["":""], href: "", id: "", name: "Billie Eilish", type: "artist", uri: "")], available_markets: [], disc_number: 1, duration_ms: 23423, explicit: true, external_ids: ["": ""], external_urls: ["":""], href: "", id: "", is_playable: true, linked_from: "", restrictions: "", name: "my future", popularity: 23, preview_url: "", track_number: 1, type: "single", uri: "", is_local: false), currently_playing_type: "Song", actions: nil), configuration: ConfigurationIntent(), albumImage: nil, playlistName: nil, artistName: nil)
     }
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Model) -> Void) {
-        let loadingData = Model(date: Date(), widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "My iPhone", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true,item: FullTrack(album: SimplifiedAlbum(album_type: "single", artists: [], available_markets: [], external_urls: ["": ""], href: "", id: "", images: [], name: "", release_date: "", release_date_precision: "", restrictions: nil, type: "", uri: ""), artists: [SimplifiedArtist(external_urls: ["":""], href: "", id: "", name: "Billie Eilish", type: "artist", uri: "")], available_markets: [], disc_number: 1, duration_ms: 23423, explicit: true, external_ids: ["": ""], external_urls: ["":""], href: "", id: "", is_playable: true, linked_from: "", restrictions: "", name: "my future", popularity: 23, preview_url: "", track_number: 1, type: "single", uri: "", is_local: false), currently_playing_type: "Song", actions: nil), configuration: ConfigurationIntent(), albumImage: nil, playlistName: "Billie Eilish")
+        let loadingData = Model(date: Date(), widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "My iPhone", type: "Widget"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true,item: FullTrack(album: SimplifiedAlbum(album_type: "single", artists: [], available_markets: [], external_urls: ["": ""], href: "", id: "", images: [], name: "", release_date: "", release_date_precision: "", restrictions: nil, type: "", uri: ""), artists: [SimplifiedArtist(external_urls: ["":""], href: "", id: "", name: "Billie Eilish", type: "artist", uri: "")], available_markets: [], disc_number: 1, duration_ms: 23423, explicit: true, external_ids: ["": ""], external_urls: ["":""], href: "", id: "", is_playable: true, linked_from: "", restrictions: "", name: "my future", popularity: 23, preview_url: "", track_number: 1, type: "single", uri: "", is_local: false), currently_playing_type: "Song", actions: nil), configuration: ConfigurationIntent(), albumImage: nil, playlistName: "Billie Eilish", artistName: "Billie Eilish")
         completion(loadingData)
     }
     
@@ -42,7 +43,7 @@ struct Provider: IntentTimelineProvider {
         if(UserDefaults(suiteName: "group.dev.netlob.widget-for-spotify")?.string(forKey: "accessToken") == nil){
             let nextUpdate = Calendar.current.date(byAdding: .second, value: Int(truncating: (configuration.refreshTime ?? 30)), to: Date())
 
-            let data = Model(date: nextUpdate!, widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "NOLOGIN"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: nil), configuration: configuration, albumImage: nil, playlistName: nil)
+            let data = Model(date: nextUpdate!, widgetData: CurrentlyPlayingContext(device: Device(is_active: true, is_private_session: false, is_restricted: false, name: "Example Device", type: "NOLOGIN"), repeat_state: "IDK", shuffle_state: false, timestamp: 324, is_playing: true, currently_playing_type: "Song", actions: nil), configuration: configuration, albumImage: nil, playlistName: nil, artistName: nil)
 
             let timeline = Timeline(entries: [data], policy: .after(nextUpdate!))
 
@@ -50,20 +51,21 @@ struct Provider: IntentTimelineProvider {
         }else{
             StatusService.getStatus(client: NetworkClient()){ updates in
                 var playlistName: String? = nil
+                var artistName: String? = nil
                 if(updates?.item?.album.album_type != "single"){
-                    playlistName = updates?.item?.name
-                }else{
-                    updates?.item?.artists.forEach{ artist in
-                        if(playlistName == nil){
-                            playlistName = ""
-                            playlistName?.append(artist.name)
-                        }
-                        else {
-                            playlistName?.append(", ")
-                            playlistName?.append(artist.name)
-                        }
+                    playlistName = updates?.item?.album.name
+                }
+                
+                updates?.item?.artists.forEach{ artist in
+                    if(artistName == nil){
+                        artistName = ""
+                        artistName?.append(artist.name)
+                    } else {
+                        artistName?.append(", ")
+                        artistName?.append(artist.name)
                     }
                 }
+
                 if((updates?.item?.album.images[1]) != nil){
                     KingfisherManager.shared.retrieveImage(with: URL(string: (updates?.item?.album.images[1].url)!)!){ result in
                         switch result{
@@ -71,7 +73,7 @@ struct Provider: IntentTimelineProvider {
                             
                             let nextUpdate = Calendar.current.date(byAdding: .second, value: Int(truncating: configuration.refreshTime ?? 30), to: Date())
 
-                            let data = Model(date: nextUpdate!, widgetData: updates!, configuration: configuration, albumImage: value.image, playlistName: playlistName)
+                            let data = Model(date: nextUpdate!, widgetData: updates!, configuration: configuration, albumImage: value.image, playlistName: playlistName, artistName: artistName)
 
                             let tomorrow = Calendar.current.date(byAdding: .second, value: 20, to: Date())!
                             let timeline = Timeline(entries: [data], policy: .after(tomorrow))
@@ -87,7 +89,7 @@ struct Provider: IntentTimelineProvider {
                     
                     let nextUpdate = Calendar.current.date(byAdding: .second, value: Int(truncating: (configuration.refreshTime ?? 30)), to: Date())
 
-                    let data = Model(date: nextUpdate!, widgetData: updates!, configuration: configuration, albumImage: nil, playlistName: playlistName)
+                    let data = Model(date: nextUpdate!, widgetData: updates!, configuration: configuration, albumImage: nil, playlistName: playlistName, artistName: nil)
 
                     let timeline = Timeline(entries: [data], policy: .after(nextUpdate!))
 
@@ -145,11 +147,18 @@ struct CurrentPlayingWidgetEntryView : SwiftUI.View {
                                 Image(uiImage: (data.albumImage?.imageWithoutBaseline())!)
                                         .resizable()
                                         .scaledToFit()
-                                    .cornerRadius(useCustomBackground ? 5 : 10)
-                                    .shadow(color: Color.black.opacity(0.5),
-                                            radius: useCustomBackground ? 0 : 2,
-                                            x: 0,
-                                            y: 0)
+//                                    .cornerRadius(useCustomBackground ? 5 : 10)
+                                    .cornerRadius(10)
+                                    .shadow(
+//                                        color: Color.black.opacity(0.5),
+//                                        radius: useCustomBackground ? 0 : 2,
+//                                        x: 0,
+//                                        y: 0
+                                        color: Color.black.opacity(0.3),
+                                        radius: 5,
+                                        x: 0, //data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2,
+                                        y: 0 //data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2
+                                    )
                             } else {
                                 Image(data.widgetData.device.name == "Nothing Playing" ? "SpotifyIconGreen" : "PreviewArtAsset")
                                     .resizable()
@@ -157,42 +166,61 @@ struct CurrentPlayingWidgetEntryView : SwiftUI.View {
                                     .cornerRadius(10)
                                     .padding(.bottom, 15)
                                     .padding(.horizontal, 2)
-                                    .shadow(color: .black,
-                                            radius: data.widgetData.device.name == "Nothing Playing" || useCustomBackground ? 0 : 2,
-                                            x: data.widgetData.device.name == "Nothing Playing" || useCustomBackground ? 0 : 2,
-                                            y: data.widgetData.device.name == "Nothing Playing" || useCustomBackground ? 0 : 2)
+                                    .shadow(
+//                                        color: Color.black.opacity(0.5),
+//                                        radius: data.widgetData.device.name == "Nothing Playing" || useCustomBackground ? 0 : 2,
+//                                        x: 0, //data.widgetData.device.name == "Nothing Playing" || useCustomBackground ? 0 : 2,
+//                                        y: 0 //data.widgetData.device.name == "Nothing Playing" || useCustomBackground ? 0 : 2
+                                        
+                                        color: Color.black.opacity(0.3),
+                                        radius: 5,
+                                        x: 0, //data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2,
+                                        y: 0 //data.widgetData.device.name == "Nothing Playing" || useCustomBackground == true ? 0 : 2
+                                    )
                             }
                             
-                            Spacer()
+//                            Spacer()
                         }
                         
-                        VStack{
-                            VStack(alignment: .leading, spacing: 3) {
-                                Text("Now Playing: ")
-                                    .font(.subheadline)
-                                    .fontWeight(.bold)
-                                    .multilineTextAlignment(.leading)
-                                Text(data.widgetData.item?.name ?? "No Song Playing")
-                                    .font(.headline)
+                        VStack(alignment: .leading){
+                            VStack(alignment: .leading) {
+//                                Text("Now Playing: ")
+//                                    .font(.subheadline)
+//                                    .fontWeight(.bold)
+//                                    .multilineTextAlignment(.leading)
+                                Text(data.widgetData.item?.name ?? "Nothing playing right now")
+                                    .font(.title2)
                                     .fontWeight(.semibold)
                                     .multilineTextAlignment(.leading)
                                     .padding(.top, 2.0)
+                                Text(data.artistName ?? "")
+                                    .font(.headline)
+                                    .fontWeight(.semibold)
+                                    .multilineTextAlignment(.leading)
                                 Text(data.playlistName ?? "")
                                     .font(.subheadline)
                                     .fontWeight(.regular)
-                                Text(data.widgetData.device.name)
-                                    .font(.footnote)
-                                    .fontWeight(.light)
                             }
                             Spacer()
-                            HStack{
-                                Image(systemName: "shuffle")
-                                    .foregroundColor(data.widgetData.shuffle_state ? .green : .gray)
+                            HStack {
+                                if(data.widgetData.shuffle_state == true){
+                                    Image(systemName: "shuffle")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: 15)
+                                        .foregroundColor(.green)
+                                }
                                 if((data.widgetData.item?.explicit) != nil && data.widgetData.item?.explicit == true){
                                     Image(systemName: "e.square.fill")
-                                        .foregroundColor(.black)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: 15)
+                                        .foregroundColor(.green)
                                 }
                             }
+                            Text(data.widgetData.device.name)
+                                .font(.footnote)
+                                .fontWeight(.light)
                         }
                         .padding(.leading, 5)
                             

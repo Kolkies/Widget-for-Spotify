@@ -30,7 +30,7 @@ struct SmallCurrent: SwiftUI.View {
                         .shadow(color: .black, radius: data.widgetData.device.name == "Nothing Playing" ? 0 : 2, x: data.widgetData.device.name == "Nothing Playing" ? 0 : 2, y: data.widgetData.device.name == "Nothing Playing" ? 0 : 2)
                 }
                 
-                Text(data.widgetData.item?.name ?? "No Song Playing")
+                Text(data.widgetData.item?.name ?? "Nothing playing right now")
                     .font(.subheadline)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.leading)

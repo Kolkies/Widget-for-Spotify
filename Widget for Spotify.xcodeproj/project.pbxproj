@@ -15,6 +15,8 @@
 		1E8D2000251BDB2D00343593 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8D1FFF251BDB2D00343593 /* Preview Assets.xcassets */; };
 		1E8D2003251BDB2D00343593 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8D2001251BDB2D00343593 /* LaunchScreen.storyboard */; };
 		F420674C2523CB8200FBDAA2 /* ThirdParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F420674B2523CB8200FBDAA2 /* ThirdParty.swift */; };
+		F4206752252474AB00FBDAA2 /* MediumCurrentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4206751252474AB00FBDAA2 /* MediumCurrentWidget.swift */; };
+		F42067542524752100FBDAA2 /* MediumCurrentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4206751252474AB00FBDAA2 /* MediumCurrentWidget.swift */; };
 		F4206CA1252386ED003560AD /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4206CA0252386ED003560AD /* UIImageColors.swift */; };
 		F4206CA2252386ED003560AD /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4206CA0252386ED003560AD /* UIImageColors.swift */; };
 		F4206CA825238F3C003560AD /* SmallCurrentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4206CA725238F3B003560AD /* SmallCurrentWidget.swift */; };
@@ -75,7 +77,6 @@
 		F4AD5FA52521E47000D62163 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FA12521E43F00D62163 /* Intents.intentdefinition */; };
 		F4AD5FB12522370600D62163 /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FB02522370600D62163 /* SettingsPage.swift */; };
 		F4AD5FB42522371600D62163 /* AboutPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FB32522371600D62163 /* AboutPage.swift */; };
-		F4AD5FB7252238C800D62163 /* AddingAWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FB6252238C800D62163 /* AddingAWidget.swift */; };
 		F4AD5FBD25223C5200D62163 /* WidgetSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FBC25223C5200D62163 /* WidgetSizes.swift */; };
 		F4AD5FC125223C8200D62163 /* SmallCurrent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FC025223C8200D62163 /* SmallCurrent.swift */; };
 		F4AD5FC225223C8200D62163 /* SmallCurrent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AD5FC025223C8200D62163 /* SmallCurrent.swift */; };
@@ -166,6 +167,7 @@
 		1E8D2002251BDB2D00343593 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E8D2004251BDB2D00343593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F420674B2523CB8200FBDAA2 /* ThirdParty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdParty.swift; sourceTree = "<group>"; };
+		F4206751252474AB00FBDAA2 /* MediumCurrentWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumCurrentWidget.swift; sourceTree = "<group>"; };
 		F4206CA0252386ED003560AD /* UIImageColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageColors.swift; sourceTree = "<group>"; };
 		F4206CA725238F3B003560AD /* SmallCurrentWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCurrentWidget.swift; sourceTree = "<group>"; };
 		F43B155F251F997700E95BB1 /* Widget for Spotify WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Widget for Spotify WidgetExtension.entitlements"; sourceTree = "<group>"; };
@@ -202,7 +204,6 @@
 		F4AD5FAB2521E65300D62163 /* WidgetIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetIntents.entitlements; sourceTree = "<group>"; };
 		F4AD5FB02522370600D62163 /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 		F4AD5FB32522371600D62163 /* AboutPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPage.swift; sourceTree = "<group>"; wrapsLines = 0; };
-		F4AD5FB6252238C800D62163 /* AddingAWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingAWidget.swift; sourceTree = "<group>"; };
 		F4AD5FBC25223C5200D62163 /* WidgetSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSizes.swift; sourceTree = "<group>"; };
 		F4AD5FC025223C8200D62163 /* SmallCurrent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCurrent.swift; sourceTree = "<group>"; };
 		F4AD5FC825223EB600D62163 /* MediumCurrent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumCurrent.swift; sourceTree = "<group>"; };
@@ -358,6 +359,7 @@
 				F48E722D251F959E0012780C /* Info.plist */,
 				F45C602025210997005088B4 /* WidgetBundle.swift */,
 				F4206CA725238F3B003560AD /* SmallCurrentWidget.swift */,
+				F4206751252474AB00FBDAA2 /* MediumCurrentWidget.swift */,
 			);
 			path = "Widget for Spotify Widget";
 			sourceTree = "<group>";
@@ -378,7 +380,6 @@
 			children = (
 				F4AD5FB02522370600D62163 /* SettingsPage.swift */,
 				F4AD5FB32522371600D62163 /* AboutPage.swift */,
-				F4AD5FB6252238C800D62163 /* AddingAWidget.swift */,
 				F420674B2523CB8200FBDAA2 /* ThirdParty.swift */,
 				1E24022E2523F9E00097A6AF /* UpcomingFeatures.swift */,
 			);
@@ -635,10 +636,10 @@
 				F4206CA825238F3C003560AD /* SmallCurrentWidget.swift in Sources */,
 				F4AD5FCE25223F9400D62163 /* NetworkClient.swift in Sources */,
 				F472C1D1251E32C6000E7318 /* SpotifyTokenHandler.swift in Sources */,
+				F42067542524752100FBDAA2 /* MediumCurrentWidget.swift in Sources */,
 				F4AD5FC125223C8200D62163 /* SmallCurrent.swift in Sources */,
 				F48E71E7251F75F20012780C /* PersonInfo.swift in Sources */,
 				1E8D1FF9251BDB2B00343593 /* SceneDelegate.swift in Sources */,
-				F4AD5FB7252238C800D62163 /* AddingAWidget.swift in Sources */,
 				F472C1CE251DE51C000E7318 /* URL.extension.swift in Sources */,
 				F4AD5FDE252280B100D62163 /* GMobBanner.swift in Sources */,
 				1E8D1FFB251BDB2B00343593 /* ContentView.swift in Sources */,
@@ -659,6 +660,7 @@
 				F45C602125210997005088B4 /* WidgetBundle.swift in Sources */,
 				F462CA99251FA894001FCF7B /* FullTrack.swift in Sources */,
 				F4B96EC12520E124002A1F6F /* SimpleMusicView.swift in Sources */,
+				F4206752252474AB00FBDAA2 /* MediumCurrentWidget.swift in Sources */,
 				F4206CA925238F3C003560AD /* SmallCurrentWidget.swift in Sources */,
 				F462CA97251FA894001FCF7B /* CurrentlyPlayingContext.swift in Sources */,
 				F462CAA0251FA8D8001FCF7B /* SpotifyData.swift in Sources */,

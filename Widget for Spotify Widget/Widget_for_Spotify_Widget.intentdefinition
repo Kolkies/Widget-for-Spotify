@@ -26,7 +26,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>4</integer>
+			<integer>6</integer>
 			<key>INIntentName</key>
 			<string>Configuration</string>
 			<key>INIntentParameters</key>
@@ -157,6 +157,56 @@
 					<true/>
 					<key>INIntentParameterTag</key>
 					<integer>4</integer>
+					<key>INIntentParameterType</key>
+					<string>Boolean</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Show Now Playing</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>LYNjDw</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>3</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<true/>
+						<key>INIntentParameterMetadataFalseDisplayName</key>
+						<string>false</string>
+						<key>INIntentParameterMetadataFalseDisplayNameID</key>
+						<string>HyCNn3</string>
+						<key>INIntentParameterMetadataTrueDisplayName</key>
+						<string>true</string>
+						<key>INIntentParameterMetadataTrueDisplayNameID</key>
+						<string>5fVy3C</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>showNowPlaying</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogFormatString</key>
+							<string>Do you want the text "Now Playing: " to show up?</string>
+							<key>INIntentParameterPromptDialogFormatStringID</key>
+							<string>1AXdWy</string>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterSupportsResolution</key>
+					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>6</integer>
 					<key>INIntentParameterType</key>
 					<string>Boolean</string>
 				</dict>

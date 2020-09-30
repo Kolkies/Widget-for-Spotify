@@ -9,18 +9,12 @@
 import SwiftUI
 
 struct SettingsPage: View {
-    @State var  showLogOutConfirm = false
+    @State var showLogOutConfirm = false
     @State private var devMode = true
     
     var body: some View {
         Form {
             Section {
-//                NavigationLink(destination: AddingAWidget()){
-//                    HStack{
-//                        Image(systemName: "text.book.closed")
-//                        Text("Adding the widget")
-//                    }
-//                }
                 NavigationLink(destination: AboutPage().navigationBarTitle("About")){
                     HStack{
                         Image(systemName: "info.circle")
@@ -64,7 +58,7 @@ struct SettingsPage: View {
             Section {
                 Button(action: {
 //                    Link("widgetforspotify@netlob.dev", destination: URL(string: "mailto:widgetforspotify@netlob.dev")!)
-                    UIApplication.shared.open(URL(string: "https://apps.apple.com/app/apple-store/id1526912392?pt=121772327&ct=Widget%20for%20Spotify&mt=8")!, options: [:])
+                    UIApplication.shared.open(URL(string: "https://apps.apple.com/us/app/id1526912392")!, options: [:])
                 }){
                     Text("Check your (advanced) Spotify stats here!")
                 }
@@ -96,7 +90,7 @@ struct SettingsPage: View {
             }
             
             if(!devMode){
-                Banner2()
+                Banner()
             }
         }
     }

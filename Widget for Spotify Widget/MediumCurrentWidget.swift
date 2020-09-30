@@ -69,7 +69,7 @@ struct MediumCurrentWidget: View {
                         .padding(.top, 2.0)
                     Text(data.artistName ?? "")
                         .font(.subheadline)
-                        .fontWeight(.semibold)
+                        .fontWeight(.regular)
                         .multilineTextAlignment(.leading)
                     Text(data.playlistName ?? "")
                         .font(.subheadline)

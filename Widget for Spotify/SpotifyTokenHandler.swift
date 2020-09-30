@@ -64,7 +64,9 @@ class SpotifyTokenHandler: ObservableObject {
             SpotifyTokenHandler.shared.authState = .NOTSIGNEDID
             return
         }
-        SpotifyTokenHandler.shared.authState = .SIGNEDIN
+        DispatchQueue.main.async {
+            SpotifyTokenHandler.shared.authState = .SIGNEDIN
+        }
         
         AF.request("https://spotifywidgettokenservice.herokuapp.com/api/refresh_token", method: .post, parameters: ["refresh_token": refreshToken]).responseJSON { response in
             if response.data != nil {

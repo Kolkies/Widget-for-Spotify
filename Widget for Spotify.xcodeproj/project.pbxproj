@@ -17,11 +17,13 @@
 		F420674C2523CB8200FBDAA2 /* ThirdParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F420674B2523CB8200FBDAA2 /* ThirdParty.swift */; };
 		F4206752252474AB00FBDAA2 /* MediumCurrentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4206751252474AB00FBDAA2 /* MediumCurrentWidget.swift */; };
 		F42067542524752100FBDAA2 /* MediumCurrentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4206751252474AB00FBDAA2 /* MediumCurrentWidget.swift */; };
+		F420675B2524938F00FBDAA2 /* Widget_for_Spotify_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F420675F2524938F00FBDAA2 /* Widget_for_Spotify_Widget.intentdefinition */; };
+		F420675C2524938F00FBDAA2 /* Widget_for_Spotify_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F420675F2524938F00FBDAA2 /* Widget_for_Spotify_Widget.intentdefinition */; };
+		F420675D2524938F00FBDAA2 /* Widget_for_Spotify_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F420675F2524938F00FBDAA2 /* Widget_for_Spotify_Widget.intentdefinition */; };
 		F4206CA1252386ED003560AD /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4206CA0252386ED003560AD /* UIImageColors.swift */; };
 		F4206CA2252386ED003560AD /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4206CA0252386ED003560AD /* UIImageColors.swift */; };
 		F4206CA825238F3C003560AD /* SmallCurrentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4206CA725238F3B003560AD /* SmallCurrentWidget.swift */; };
 		F4206CA925238F3C003560AD /* SmallCurrentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4206CA725238F3B003560AD /* SmallCurrentWidget.swift */; };
-		F4206CB0252396F5003560AD /* Widget_for_Spotify_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F48E722A251F959D0012780C /* Widget_for_Spotify_Widget.intentdefinition */; };
 		F43B1569251F9D6100E95BB1 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F472C1B3251C695E000E7318 /* SpotifyiOS.framework */; };
 		F45C602125210997005088B4 /* WidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C602025210997005088B4 /* WidgetBundle.swift */; };
 		F462CA92251FA894001FCF7B /* SpotifyContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E71F2251F86BB0012780C /* SpotifyContext.swift */; };
@@ -65,8 +67,6 @@
 		F48E7225251F959C0012780C /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B3B5D8251BF5E300570A97 /* WidgetKit.framework */; };
 		F48E7226251F959C0012780C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B3B5DA251BF5E300570A97 /* SwiftUI.framework */; };
 		F48E722C251F959E0012780C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F48E722B251F959E0012780C /* Assets.xcassets */; };
-		F48E722E251F959E0012780C /* Widget_for_Spotify_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F48E722A251F959D0012780C /* Widget_for_Spotify_Widget.intentdefinition */; };
-		F48E722F251F959E0012780C /* Widget_for_Spotify_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F48E722A251F959D0012780C /* Widget_for_Spotify_Widget.intentdefinition */; };
 		F48E7232251F959E0012780C /* Widget for Spotify WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F48E7224251F959C0012780C /* Widget for Spotify WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F48E7238251F95D00012780C /* Widget_for_Spotify_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E7237251F95D00012780C /* Widget_for_Spotify_Widget.swift */; };
 		F48E723C251F967E0012780C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F48E723B251F967E0012780C /* Alamofire */; };
@@ -168,6 +168,8 @@
 		1E8D2004251BDB2D00343593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F420674B2523CB8200FBDAA2 /* ThirdParty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdParty.swift; sourceTree = "<group>"; };
 		F4206751252474AB00FBDAA2 /* MediumCurrentWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumCurrentWidget.swift; sourceTree = "<group>"; };
+		F420675E2524938F00FBDAA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/Widget_for_Spotify_Widget.intentdefinition; sourceTree = "<group>"; };
+		F4206762252493A400FBDAA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Widget_for_Spotify_Widget.strings; sourceTree = "<group>"; };
 		F4206CA0252386ED003560AD /* UIImageColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageColors.swift; sourceTree = "<group>"; };
 		F4206CA725238F3B003560AD /* SmallCurrentWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCurrentWidget.swift; sourceTree = "<group>"; };
 		F43B155F251F997700E95BB1 /* Widget for Spotify WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Widget for Spotify WidgetExtension.entitlements"; sourceTree = "<group>"; };
@@ -193,7 +195,6 @@
 		F48E7204251F8DE00012780C /* Copyright.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copyright.swift; sourceTree = "<group>"; };
 		F48E7207251F93DE0012780C /* ResumePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumePoint.swift; sourceTree = "<group>"; };
 		F48E7224251F959C0012780C /* Widget for Spotify WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Widget for Spotify WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F48E722A251F959D0012780C /* Widget_for_Spotify_Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Widget_for_Spotify_Widget.intentdefinition; sourceTree = "<group>"; };
 		F48E722B251F959E0012780C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F48E722D251F959E0012780C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F48E7237251F95D00012780C /* Widget_for_Spotify_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget_for_Spotify_Widget.swift; sourceTree = "<group>"; };
@@ -354,7 +355,7 @@
 			children = (
 				F45C6022252109C1005088B4 /* Network */,
 				F48E7237251F95D00012780C /* Widget_for_Spotify_Widget.swift */,
-				F48E722A251F959D0012780C /* Widget_for_Spotify_Widget.intentdefinition */,
+				F420675F2524938F00FBDAA2 /* Widget_for_Spotify_Widget.intentdefinition */,
 				F48E722B251F959E0012780C /* Assets.xcassets */,
 				F48E722D251F959E0012780C /* Info.plist */,
 				F45C602025210997005088B4 /* WidgetBundle.swift */,
@@ -615,7 +616,7 @@
 				F48E7208251F93DE0012780C /* ResumePoint.swift in Sources */,
 				F420674C2523CB8200FBDAA2 /* ThirdParty.swift in Sources */,
 				1E24022F2523F9E00097A6AF /* UpcomingFeatures.swift in Sources */,
-				F48E722F251F959E0012780C /* Widget_for_Spotify_Widget.intentdefinition in Sources */,
+				F420675B2524938F00FBDAA2 /* Widget_for_Spotify_Widget.intentdefinition in Sources */,
 				F4AD5FC425223CA800D62163 /* Widget_for_Spotify_Widget.swift in Sources */,
 				F48E71E4251F75800012780C /* ImageObject.swift in Sources */,
 				F48E71F3251F86BB0012780C /* SpotifyContext.swift in Sources */,
@@ -677,7 +678,7 @@
 				F4AD5FE22522867F00D62163 /* SpotifySignIn.swift in Sources */,
 				F462CA95251FA894001FCF7B /* PersonInfo.swift in Sources */,
 				F462CA96251FA894001FCF7B /* Device.swift in Sources */,
-				F48E722E251F959E0012780C /* Widget_for_Spotify_Widget.intentdefinition in Sources */,
+				F420675C2524938F00FBDAA2 /* Widget_for_Spotify_Widget.intentdefinition in Sources */,
 				F4AD5FC625223DF000D62163 /* WidgetSizes.swift in Sources */,
 				F462CA9E251FA894001FCF7B /* SimplifiedAlbum.swift in Sources */,
 			);
@@ -688,7 +689,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4AD5FA22521E43F00D62163 /* Intents.intentdefinition in Sources */,
-				F4206CB0252396F5003560AD /* Widget_for_Spotify_Widget.intentdefinition in Sources */,
+				F420675D2524938F00FBDAA2 /* Widget_for_Spotify_Widget.intentdefinition in Sources */,
 				F4AD5F982521E42900D62163 /* IntentHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -715,6 +716,15 @@
 				1E8D2002251BDB2D00343593 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		F420675F2524938F00FBDAA2 /* Widget_for_Spotify_Widget.intentdefinition */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F420675E2524938F00FBDAA2 /* Base */,
+				F4206762252493A400FBDAA2 /* en */,
+			);
+			name = Widget_for_Spotify_Widget.intentdefinition;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -845,6 +855,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Widget for Spotify/Widget for Spotify.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Widget for Spotify/Preview Content\"";
 				DEVELOPMENT_TEAM = FCB4S3W235;
 				ENABLE_PREVIEWS = YES;
@@ -873,6 +884,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Widget for Spotify/Widget for Spotify.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Widget for Spotify/Preview Content\"";
 				DEVELOPMENT_TEAM = FCB4S3W235;
 				ENABLE_PREVIEWS = YES;
@@ -901,6 +913,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = "Widget for Spotify WidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = FCB4S3W235;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -928,6 +941,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = "Widget for Spotify WidgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = FCB4S3W235;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -953,6 +967,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = WidgetIntents/WidgetIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = FCB4S3W235;
 				INFOPLIST_FILE = WidgetIntents/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -973,6 +988,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = WidgetIntents/WidgetIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = FCB4S3W235;
 				INFOPLIST_FILE = WidgetIntents/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

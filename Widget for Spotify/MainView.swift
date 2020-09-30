@@ -88,6 +88,7 @@ struct MainView: View {
                     }
                 }
             }
+            .navigationViewStyle(StackNavigationViewStyle())
             .tabItem {
                 Image(systemName: "music.note.list")
                 Text("Home")
@@ -97,6 +98,7 @@ struct MainView: View {
                 SettingsPage()
                     .navigationBarTitle("Settings")
             }
+            .navigationViewStyle(StackNavigationViewStyle())
             .tabItem {
                 Image(systemName: "gear")
                 Text("Settings")

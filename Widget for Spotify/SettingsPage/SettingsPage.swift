@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SettingsPage: View {
     @State var  showLogOutConfirm = false
+    @State private var devMode = true
     
     var body: some View {
         Form {
@@ -94,7 +95,9 @@ struct SettingsPage: View {
                 }
             }
             
-            Banner2()
+            if(!devMode){
+                Banner2()
+            }
         }
     }
 }

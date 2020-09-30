@@ -12,7 +12,7 @@ import WidgetKit
 struct MainView: View {
     @ObservedObject var spotifyData = SpotifyData.shared
     
-    @State private var devMode = false
+    @State private var devMode = true
     
     @State private var showingAlert = false
     
